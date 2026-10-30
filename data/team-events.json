@@ -1,0 +1,1430 @@
+{
+ "about": "HY team night agendas for team-event.html, newest first. Edited on the page after the admin login (··· → /api/save-functions?doc=team-events) or by Claude. Each agenda is a list of sections (intro, calendar, volume, growth, leadership); each item has a topic (t), speakers (who), a panel lead (by), minutes (min), bullets (pts) and, in the calendar, events (cal).",
+ "savedAt": "2026-10-19T12:31:22.000Z",
+ "events": [
+  {
+   "id": "2026-10-25",
+   "date": "2026-10-25",
+   "kind": "Online sharing",
+   "title": "人生修炼局",
+   "sub": "找准自己，把钱和人生想明白",
+   "time": "8:00 to 9:00 AM ET",
+   "where": "腾讯会议 Tencent Meeting",
+   "whereNote": "Beijing time Sunday 8:00 to 9:00 PM · the meeting link shows after you sign up",
+   "signup": "https://f.kdocs.cn/g/EENhFudz",
+   "roles": [
+    [
+     "Speakers",
+     "Jerry & Leann"
+    ],
+    [
+     "Speakers",
+     "Johnny & Irene"
+    ]
+   ],
+   "agenda": []
+  },
+  {
+   "id": "2026-10-17",
+   "date": "2026-10-17",
+   "kind": "Brainstorm",
+   "title": "Halloween Product Party Brainstorm",
+   "sub": "Session 2",
+   "time": "9:30 to 10:30 PM ET",
+   "where": "Zoom",
+   "zoom": "https://us06web.zoom.us/j/5153333193",
+   "agenda": [
+    {
+     "k": "intro",
+     "items": [
+      {
+       "t": "Pre-work",
+       "pts": [
+        "Everyone: master one pain point before the training, like liver detox or acne"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "volume",
+     "items": [
+      {
+       "t": "Health training: one pain point each",
+       "pts": [
+        "Oct 30 is a practice field, not a sales target",
+        "Three steps: I know how you feel · I felt the same (or someone I know did) · here's what I found",
+        "Then the product map: what they marked, and the product that goes with it",
+        "Every pain point is in the product site's Education tab"
+       ]
+      },
+      {
+       "t": "Expo prep",
+       "pts": [
+        "Demos: vitamin C apple, XS mocktail",
+        "Health and skin guide sheet (Irene)",
+        "Inventory order by Tue, Oct 20 (unsold stock can be returned)",
+        "Short invite script for past customers"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "leadership",
+     "items": [
+      {
+       "t": "Role-play",
+       "pts": [
+        "Pair up and walk one guest through the three steps, ending with the ask"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "2026-10-16",
+   "date": "2026-10-16",
+   "kind": "FNH",
+   "title": "HY Friday Night Hangout",
+   "sub": "October",
+   "time": "7:30 to 9:00 PM ET",
+   "where": "13102B 40th Rd",
+   "whereNote": "HY Condo · also on Zoom",
+   "zoom": "515-333-3193",
+   "dress": "Business Casual",
+   "flow": [
+    [
+     "7:10 to 7:30 PM",
+     "Networking"
+    ],
+    [
+     "7:30 to 9:00 PM",
+     "All partners"
+    ],
+    [
+     "9:00 to 9:30 PM",
+     "Hangout"
+    ]
+   ],
+   "roles": [
+    [
+     "Host",
+     "Eunice",
+     ""
+    ],
+    [
+     "Co-host",
+     "Luke",
+     ""
+    ],
+    [
+     "Online CEO (Chief Energy Officer)",
+     "Tyler",
+     ""
+    ],
+    [
+     "Tech",
+     "Johnny",
+     ""
+    ]
+   ],
+   "agenda": [
+    {
+     "k": "intro",
+     "items": [
+      {
+       "min": 5
+      },
+      {
+       "t": "Candidates & new IBOs",
+       "pts": [
+        "Name · City · Background · One-line Excitement"
+       ]
+      },
+      {
+       "t": "Existing partners",
+       "pts": [
+        "Name · City · Background · What you did this week (2 MG1 / 20+ PV retail) · Goal"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "calendar",
+     "items": [
+      {
+       "cal": [
+        [
+         "Oct 20 (Tue)",
+         "Clickner combined virtual team meeting",
+         "9 PM ET"
+        ],
+        [
+         "Oct 21 (Wed)",
+         "NY/NJ in-person JL Team Evaluation ft. Leann Ren",
+         "8 to 9 PM ET · Host: Yufan He · Cre8ive Studio NYC, also on Zoom"
+        ],
+        [
+         "Oct 24 (Sat)",
+         "Leadership 1 “Go 6x15, Bigger Vision Higher Impact” workshop",
+         "2 to 6 PM ET · For Phase B IBOs with 600 PV GPV in Sept or Oct, or 300 PV GPV in their first October"
+        ],
+        [
+         "Oct 25 (Sun)",
+         "HY Seattle trip"
+        ],
+        [
+         "Oct 30 (Fri)",
+         "HY Product Expo",
+         "5 to 7 PM ET · Cre8ive Studio NYC"
+        ],
+        [
+         "Dec 28 (Mon)",
+         "Year End Trip 2026, Scottsdale AZ",
+         "Dec 28 to Jan 1, 4 nights · First 60 people: $550 single, $1,500 per couple"
+        ],
+        [
+         "2026-27",
+         "Leadership 1 BBI Trip to Puerto Rico",
+         "New BBI in 2026-27: 1 month qualifies, 2 months adds 1 night room paid, 3 months 2 nights · Past BBI qualifiers: 1 leg on the BBI trip plus 1 more leg BFI, a new 7500 PV month, or Platinum in 2026-27"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "k": "volume",
+     "items": [
+      {
+       "t": "Retail: getting ready for the holidays",
+       "who": "Annice",
+       "min": 10,
+       "pts": [
+        "Retail ideas",
+        "How to leverage a product party",
+        "Holiday bundles and discounts"
+       ]
+      },
+      {
+       "t": "Our new cellular aging product",
+       "who": "Wendy",
+       "min": 5
+      },
+      {
+       "t": "Sleep and energy products",
+       "who": "Yoyo",
+       "min": 5
+      }
+     ]
+    },
+    {
+     "k": "growth",
+     "items": [
+      {
+       "t": "Audio",
+       "who": "Adam",
+       "min": 2,
+       "pts": [
+        "What you listened to, 1 or 2 major takeaways, 1 or 2 things you are implementing"
+       ]
+      },
+      {
+       "t": "Book",
+       "who": "Laura",
+       "min": 2,
+       "pts": [
+        "What you read, 1 or 2 major takeaways, 1 or 2 things you are implementing"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "leadership",
+     "items": [
+      {
+       "t": "Mover & Shaker sharing",
+       "who": "Johnson, Shirley, Lister",
+       "by": "Johnny",
+       "min": 15,
+       "pts": [
+        "How to build a work habit",
+        "How to leverage mentorship",
+        "What is it like to graduate fast"
+       ]
+      },
+      {
+       "t": "0 to 1 to 10",
+       "who": "Jerry & Leann",
+       "min": 25,
+       "pts": [
+        "Why work hard, and how do you balance career, life and business in your early or mid 20s?",
+        "What should you expect in your first year?",
+        "How do you get your first IBO, and what do you do once you have one?",
+        "Why does qualifying for 4th Week Leadership matter?"
+       ]
+      }
+     ]
+    }
+   ],
+   "at": "2026-10-15T15:28:52.000Z"
+  },
+  {
+   "id": "2026-09-26",
+   "date": "2026-09-26",
+   "kind": "Orientation",
+   "title": "HY Saturday Night Hangout",
+   "sub": "September New Apprentice Orientation",
+   "time": "8:00 to 9:00 PM ET",
+   "where": "Zoom only",
+   "dress": "Business casual, camera on",
+   "flow": [
+    [
+     "7:55 to 8:00 PM",
+     "Check in"
+    ],
+    [
+     "8:00 to 9:00 PM",
+     "All partners"
+    ]
+   ],
+   "roles": [
+    [
+     "Host",
+     "Annie"
+    ]
+   ],
+   "agendaTitle": "New IBO Orientation",
+   "agenda": [
+    {
+     "k": "intro",
+     "items": [
+      {
+       "who": "Annie",
+       "min": 3,
+       "pts": [
+        [
+         "New apprentices since the last orientation",
+         [
+          "Name · City · Who you are building with · What you are excited about · One fun fact about yourself"
+         ]
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "k": "growth",
+     "items": [
+      {
+       "t": "Book",
+       "who": "Shirley",
+       "min": 2,
+       "pts": [
+        "What you read, 1 or 2 major takeaways, 1 or 2 things you are implementing"
+       ]
+      },
+      {
+       "t": "Audio",
+       "who": "Yoyo",
+       "min": 2,
+       "pts": [
+        "What you listened to, 1 or 2 major takeaways, 1 or 2 things you are implementing"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "volume",
+     "items": [
+      {
+       "t": "First circle: personal use and retail",
+       "who": "Irene",
+       "min": 10,
+       "pts": [
+        "What we ran at the product party, and what people responded to",
+        "Where the first customers came from, and what the volume looked like after",
+        "“People don't get started with a company, they get started with you.”",
+        "What we would do differently next time"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "leadership",
+     "items": [
+      {
+       "t": "Mentorship: turning outwardly to the right people",
+       "who": "Lister",
+       "min": 5,
+       "pts": [
+        "How to get the most out of mentorship",
+        "The wins outside the business: finance and career"
+       ]
+      },
+      {
+       "t": "Networking in your first 90 days",
+       "who": "Johnny",
+       "min": 10,
+       "pts": [
+        "How you approach someone who already knows you",
+        "How to lead people, not convince people",
+        "How to create steady results"
+       ]
+      },
+      {
+       "t": "First 90 days: doubt is normal, acting on doubt is not",
+       "who": "Jerry & Leann",
+       "min": 15,
+       "pts": [
+        "How to get good at riding the entrepreneurship roller coaster",
+        "How to build and protect your self-image",
+        "Can I do it? What if I fall off the track? Is my goal too far away?",
+        "How to develop a vision, and the confidence in it"
+       ]
+      },
+      {
+       "t": "Open Q&A",
+       "who": "Jerry",
+       "min": 8
+      }
+     ]
+    }
+   ],
+   "zoom": "515-333-3193",
+   "at": "2026-10-15T14:29:30.000Z"
+  },
+  {
+   "id": "2026-07-31",
+   "date": "2026-07-31",
+   "kind": "FNH",
+   "title": "HY Team Friday Night Hangout",
+   "sub": "July",
+   "time": "7:30 to 9:00 PM ET",
+   "where": "Johnny & Irene's place, Flushing",
+   "whereNote": "Address in the group chat · also on Zoom",
+   "dress": "Sharp business casual",
+   "flow": [
+    [
+     "7:20 to 7:30 PM",
+     "Networking"
+    ],
+    [
+     "7:30 to 9:00 PM",
+     "All partners"
+    ],
+    [
+     "9:00 to 9:30 PM",
+     "Hangout"
+    ]
+   ],
+   "roles": [
+    [
+     "Host",
+     "Annie"
+    ],
+    [
+     "Co-host",
+     "Wendy"
+    ],
+    [
+     "Online CEO (Chief Energy Officer)",
+     "Vemon"
+    ],
+    [
+     "Tech",
+     "Johnny"
+    ],
+    [
+     "DJ",
+     "Vemon"
+    ]
+   ],
+   "agenda": [
+    {
+     "k": "intro",
+     "items": [
+      {
+       "pts": [
+        [
+         "Candidates & new IBOs",
+         [
+          "Name · City · Background · What excites you about the opportunity"
+         ]
+        ],
+        [
+         "Existing partners",
+         [
+          "Name · City · Background · What you did this week (2 MG1 / 20+ PV retail) · Goal"
+         ]
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "k": "calendar",
+     "items": [
+      {
+       "min": 5,
+       "cal": [
+        [
+         "Aug 5 (Wed)",
+         "JYT Team Evaluation ft. Johnny Huang"
+        ],
+        [
+         "Aug 7 & 8",
+         "Online function"
+        ],
+        [
+         "Aug 16 (Sun)",
+         "JYT Estate Promotion (qualification extended to the 15th)"
+        ],
+        [
+         "End of Aug",
+         "4th Week Leadership, Phase B + 6 MGs"
+        ],
+        [
+         "End of Aug",
+         "LLC Mastermind Elite"
+        ],
+        [
+         "Oct 2 to 4",
+         "Orlando Spartan Breakthrough Conference"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "k": "volume",
+     "items": [
+      {
+       "t": "Acne & skin",
+       "who": "Johnny",
+       "min": 15,
+       "pts": [
+        "What separates a result that holds from one that comes back next month",
+        "The product and volume knowledge hub: johnnnyay.github.io/product-marketing"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "growth",
+     "items": [
+      {
+       "t": "Book",
+       "who": "Yoyo",
+       "min": 2,
+       "pts": [
+        "What you read, 1 or 2 major takeaways, 1 or 2 things you are implementing"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "leadership",
+     "items": [
+      {
+       "t": "Creating results in volume",
+       "who": "Tenzin & Raymond",
+       "by": "Johnny",
+       "min": 10,
+       "pts": [
+        "What was it like when you first started the business?",
+        "What was your mindset, attitude and approach toward personal use?",
+        "How did you create your first few retail successes?"
+       ]
+      },
+      {
+       "t": "First 90 days to a steady, growing Phase B and beyond",
+       "who": "Annie, Wendy",
+       "min": 20,
+       "pts": [
+        "How did you get started as sisters?",
+        "Dos and don'ts for close friends and family",
+        "The right mindset and expectations in the first 60 DCR",
+        "How did the education habits, the association and the system make a difference in your life?"
+       ]
+      },
+      {
+       "who": "Johnny & Irene",
+       "min": 25,
+       "pts": [
+        "What surprised you stepping into business ownership for the first time?",
+        "How do you grow your adversity quotient, your ability to handle stress and things not going the way you want?",
+        "How do you deal with differences between people?",
+        "How do you overcome personal shortcomings that hinder growth?"
+       ]
+      }
+     ]
+    }
+   ],
+   "zoom": "515-333-3193",
+   "at": "2026-10-15T14:29:30.000Z"
+  },
+  {
+   "id": "2026-05-15",
+   "date": "2026-05-15",
+   "kind": "FNH",
+   "title": "HY Friday Night Hangout",
+   "sub": "May",
+   "time": "7:30 to 9:00 PM ET",
+   "where": "Johnny & Irene's place, Flushing",
+   "whereNote": "Address in the group chat · also on Zoom",
+   "dress": "Sharp business casual",
+   "flow": [
+    [
+     "7:20 to 7:30 PM",
+     "Networking"
+    ],
+    [
+     "7:30 to 9:00 PM",
+     "All partners"
+    ],
+    [
+     "9:00 to 9:30 PM",
+     "Hangout"
+    ]
+   ],
+   "roles": [
+    [
+     "Host",
+     "Vemon"
+    ],
+    [
+     "Co-host",
+     "Luke"
+    ],
+    [
+     "Online CEO (Chief Energy Officer)",
+     "Ding"
+    ],
+    [
+     "Tech",
+     "Johnny"
+    ]
+   ],
+   "agenda": [
+    {
+     "k": "intro",
+     "items": [
+      {
+       "pts": [
+        [
+         "Candidates & new IBOs",
+         [
+          "Name · City · Background · What excites you about the opportunity"
+         ]
+        ],
+        [
+         "Existing partners",
+         [
+          "Name · City · Background · What you did this week (2 MG1 / 20+ PV retail) · Goal"
+         ]
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "k": "calendar",
+     "items": [
+      {
+       "min": 5,
+       "cal": [
+        [
+         "May 19 (Tue)",
+         "Clickner Combined Team Meeting"
+        ],
+        [
+         "May 20 (Wed)",
+         "JL Team Evaluation ft. Craig Clickner"
+        ],
+        [
+         "May 23 & 24",
+         "HY trip to Seattle"
+        ],
+        [
+         "May 26 (Tue)",
+         "4th Week Leadership, Phase B + 6 MGs"
+        ],
+        [
+         "May 30 (Sat)",
+         "BAM sessions: Bay Area, Chicago, New Jersey, Orlando, Phoenix"
+        ],
+        [
+         "May 31 (Sun)",
+         "BAM sessions: Detroit, Los Angeles, Seattle"
+        ],
+        [
+         "June 4",
+         "JL Launch 2 Promotion"
+        ],
+        [
+         "June 5 to 7",
+         "Level Up in Milwaukee, WI"
+        ],
+        [
+         "June 20 to 22",
+         "Go Diamond in Breckenridge, CO"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "k": "volume",
+     "items": [
+      {
+       "t": "g&h™ and Artistry™ SPF products",
+       "who": "Irene",
+       "min": 15,
+       "pts": [
+        "Why prevention matters long term",
+        "Understanding SPF, and why daily protection matters",
+        "Chemical vs mineral protection",
+        "The g&h, Artistry skincare and SPF lineup",
+        "Simple daily skincare systems",
+        "Retail tips: positioning products through lifestyle conversations",
+        "Demo with the SAM machine"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "growth",
+     "items": [
+      {
+       "t": "Book",
+       "who": "Ting",
+       "min": 2,
+       "pts": [
+        "What you read, 1 or 2 major takeaways, 1 or 2 things you are implementing"
+       ]
+      },
+      {
+       "t": "Podcast",
+       "who": "Lister",
+       "min": 2,
+       "pts": [
+        "What you listened to, 1 or 2 major takeaways, 1 or 2 things you are implementing"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "leadership",
+     "items": [
+      {
+       "t": "Networking panel: reflection, PHP & consistency",
+       "who": "Raymond, William",
+       "by": "Johnny",
+       "min": 10,
+       "pts": [
+        "What you learn from booking MGs with your AB list (Raymond)",
+        "Why PHP matters (Raymond)",
+        "How reflection speeds up your growth (William)",
+        "Patience and consistency, if you want results (William)"
+       ]
+      },
+      {
+       "t": "Self-image, attitude & prioritization toward 4th Week Leadership",
+       "who": "Annie, Amy",
+       "min": 15,
+       "pts": [
+        "Why and how attitude and belief matter in a good work ethic",
+        "How to handle emotional inconsistency",
+        "What self-image is, and how to work on it",
+        "Time management and life prioritization",
+        "How to stay grateful and joyful in pressure seasons"
+       ]
+      },
+      {
+       "t": "Clarity in your journey, long-term vision, and minimizing the noise",
+       "who": "Johnny & Irene",
+       "min": 15,
+       "pts": [
+        "Long-term vision, and digging the well before you're thirsty",
+        "Controlling the narrative (and the noise)",
+        "Why clarity creates consistency",
+        "How to stay anchored to your WHY",
+        "Why you can't judge your future by temporary emotions",
+        "The power of the spoken word"
+       ]
+      }
+     ]
+    }
+   ],
+   "zoom": "515-333-3193",
+   "at": "2026-10-15T14:29:30.000Z"
+  },
+  {
+   "id": "2026-04-10",
+   "date": "2026-04-10",
+   "kind": "FNH",
+   "title": "HY Friday Night Hangout",
+   "sub": "April",
+   "time": "7:30 to 9:00 PM ET",
+   "where": "Johnny & Irene's place, Flushing",
+   "whereNote": "Address in the group chat · also on Zoom",
+   "dress": "Sharp business casual",
+   "flow": [
+    [
+     "7:20 to 7:30 PM",
+     "Networking"
+    ],
+    [
+     "7:30 to 9:00 PM",
+     "All partners"
+    ],
+    [
+     "9:00 to 9:30 PM",
+     "Hangout"
+    ]
+   ],
+   "roles": [
+    [
+     "Host",
+     "Martin"
+    ],
+    [
+     "Co-host",
+     "Luke"
+    ],
+    [
+     "Online CEO (Chief Energy Officer)",
+     "Luke"
+    ],
+    [
+     "Tech",
+     "Johnny"
+    ]
+   ],
+   "agenda": [
+    {
+     "k": "intro",
+     "items": [
+      {
+       "pts": [
+        [
+         "Candidates & new IBOs",
+         [
+          "Name · City · Background · What excites you about the opportunity"
+         ]
+        ],
+        [
+         "Existing partners",
+         [
+          "Name · City · Background · What you did this week (2 MG1 / 20+ PV retail) · Goal"
+         ]
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "k": "calendar",
+     "items": [
+      {
+       "min": 5,
+       "cal": [
+        [
+         "Apr 14 to 16",
+         "Amway 20% full PV promotion"
+        ],
+        [
+         "Apr 15",
+         "NYC in-person Team Evaluation ft. Johnny Huang (host: Vemon Cheng)"
+        ],
+        [
+         "May 30 & 31",
+         "BAM sessions"
+        ],
+        [
+         "June 4",
+         "JL Launch 2 Promotion"
+        ],
+        [
+         "June 5 to 7",
+         "Level Up in Milwaukee, WI"
+        ],
+        [
+         "June 20 to 22",
+         "Go Diamond in Breckenridge, CO"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "k": "growth",
+     "items": [
+      {
+       "t": "Podcast",
+       "who": "Tricia",
+       "min": 2,
+       "pts": [
+        "My favorite podcast on the Leadership1 app this week, and 1 or 2 points I learned from it"
+       ]
+      },
+      {
+       "t": "Book",
+       "who": "Raymond",
+       "min": 2,
+       "pts": [
+        "1 or 2 points from my reading this week (and the book), and what I'm working on implementing"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "volume",
+     "items": [
+      {
+       "t": "Sales & retail",
+       "who": "Irene",
+       "min": 10,
+       "pts": [
+        "Normalize the skill of sales, and why it matters",
+        [
+         "A crash course on approach, flow and mindset in different contexts",
+         [
+          "C2C product sharing",
+          "C2C invitations to health and skin analysis sessions"
+         ]
+        ]
+       ]
+      },
+      {
+       "t": "Across the product line",
+       "who": "Amy, Wendy, Eunice",
+       "min": 20,
+       "pts": [
+        "Across the product line: Nutrilite, Artistry, XS, LOC",
+        "Brand history, competitive advantage and credentials",
+        "One simple, duplicatable product demo"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "leadership",
+     "items": [
+      {
+       "t": "Networking & leadership",
+       "who": "Vemon, Annie, Johnny",
+       "min": 20,
+       "pts": [
+        "How to perform well in your career: promotion, time and energy management",
+        [
+         "How to manage your AB list",
+         [
+          "Highlight: Raymond and what he did"
+         ]
+        ],
+        [
+         "Face-to-face networking skills",
+         [
+          "Why mastering MG booking matters",
+          "How to share your story",
+          "How to handle common scenarios and steer the conversation to what you need to check"
+         ]
+        ],
+        "When and why you want to learn to run the first MG"
+       ]
+      },
+      {
+       "t": "Handling doubt & belief",
+       "who": "Johnny & Irene",
+       "min": 15,
+       "pts": [
+        "A crash course on temperament: don't box yourself in",
+        [
+         "Handling the dip in",
+         [
+          "Life and career",
+          "Business",
+          "Self-belief"
+         ]
+        ]
+       ]
+      }
+     ]
+    }
+   ],
+   "zoom": "515-333-3193",
+   "at": "2026-10-15T14:29:30.000Z"
+  },
+  {
+   "id": "2026-03-13",
+   "date": "2026-03-13",
+   "kind": "FNH",
+   "title": "HY + JL Platinum-Going Team Friday Night Hangout",
+   "sub": "March",
+   "time": "7:30 to 9:00 PM ET",
+   "where": "Johnny & Irene's place, Flushing",
+   "whereNote": "Address in the group chat · also on Zoom",
+   "dress": "Sharp business casual",
+   "flow": [
+    [
+     "7:20 to 7:30 PM",
+     "Networking"
+    ],
+    [
+     "7:30 to 9:00 PM",
+     "All partners"
+    ],
+    [
+     "9:00 to 9:30 PM",
+     "Wrap-up & hangouts"
+    ]
+   ],
+   "roles": [
+    [
+     "Host",
+     "Johnny"
+    ],
+    [
+     "Co-host",
+     "Eden"
+    ],
+    [
+     "Online CEO (Chief Energy Officer)",
+     "Luke"
+    ],
+    [
+     "Tech",
+     "Johnny"
+    ]
+   ],
+   "agenda": [
+    {
+     "k": "intro",
+     "items": [
+      {
+       "pts": [
+        [
+         "Candidates / new IBOs",
+         [
+          "Name · City · Background · What excites you about the opportunity"
+         ]
+        ],
+        [
+         "Existing partners",
+         [
+          "Name · City · Background",
+          "Achievements from the past week",
+          "Next week's goal"
+         ]
+        ],
+        [
+         "Special highlights",
+         [
+          "2 MG conversations booked",
+          "Retail success / product results"
+         ]
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "k": "volume",
+     "items": [
+      {
+       "t": "Product & volume generation",
+       "who": "Martin, Vemon, Tenzin",
+       "min": 12,
+       "pts": [
+        "Daily product use, and why it builds belief",
+        "How to reach 150 PV consistently",
+        "A simple strategy to help new IBOs find their first customers",
+        "Quick tips on double core and beyond"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "calendar",
+     "items": [
+      {
+       "who": "Host",
+       "min": 5,
+       "cal": [
+        [
+         "Mar 18",
+         "Team Evaluation Workshop, Sean Chen"
+        ],
+        [
+         "Mar 19",
+         "JL Launch 2 Promotion celebration (Orlando, FL)"
+        ],
+        [
+         "Mar 20 to 22",
+         "In-person #ELEVATE function (Orlando, FL)"
+        ],
+        [
+         "Coming up",
+         "Go Diamond Weekend"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "k": "growth",
+     "items": [
+      {
+       "t": "Podcast",
+       "who": "Lister",
+       "min": 2,
+       "pts": [
+        "My favorite podcast on the Leadership1 app this week, and 1 or 2 points I learned from it"
+       ]
+      },
+      {
+       "t": "Book",
+       "who": "Ding",
+       "min": 2,
+       "pts": [
+        "1 or 2 points from my reading this week (and the book), and what I'm working on implementing"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "leadership",
+     "items": [
+      {
+       "t": "Consistency in networking",
+       "who": "Derek",
+       "min": 5,
+       "pts": [
+        "Why developing a work habit matters",
+        "How to create personal momentum",
+        "How to stay focused when results haven't shown up yet"
+       ]
+      },
+      {
+       "t": "Ultimate function preparation",
+       "who": "Johnny & Irene",
+       "min": 15,
+       "pts": [
+        "Why big functions are essential for short-term and long-term success",
+        "How to prepare apprentices before major events",
+        "Using events to speed up belief and duplication"
+       ]
+      },
+      {
+       "t": "How to win in the next 90 days",
+       "who": "Jerry Tan",
+       "min": 20,
+       "pts": [
+        [
+         "The first 90 days for a new apprentice",
+         [
+          "Initial excitement, the emotional roller coaster, then long-term commitment",
+          "Getting through doubt, wrong expectations and a lack of activity momentum"
+         ]
+        ],
+        "Why the first 90 days are the most important stage for every new apprentice",
+        "How to build self-confidence",
+        "What it's like to grow from 0 to 3/6"
+       ]
+      }
+     ]
+    }
+   ],
+   "zoom": "515-333-3193",
+   "at": "2026-10-15T14:29:30.000Z"
+  },
+  {
+   "id": "2026-02-27",
+   "date": "2026-02-27",
+   "kind": "FNH",
+   "title": "HY Friday Night Hangout",
+   "sub": "Virtual + in person",
+   "time": "7:30 to 9:00 PM ET",
+   "where": "In person and on Zoom",
+   "dress": "Sharp business casual",
+   "roles": [
+    [
+     "Host",
+     "Vemon"
+    ],
+    [
+     "Co-host",
+     "William"
+    ],
+    [
+     "Online CEO (Chief Energy Officer)",
+     "Ding"
+    ],
+    [
+     "Tech",
+     "Johnny"
+    ]
+   ],
+   "agenda": [
+    {
+     "k": "intro",
+     "items": [
+      {
+       "pts": [
+        [
+         "Candidates & new IBOs",
+         [
+          "Name · City · Background · What excites you about the opportunity"
+         ]
+        ],
+        [
+         "Existing partners (2 MGs or any retail success)",
+         [
+          "Name · City · Background · What you did this week · Goal"
+         ]
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "k": "volume",
+     "items": [
+      {
+       "t": "Health and SAM sessions",
+       "who": "Annice & Wendy",
+       "min": 12,
+       "pts": [
+        "From invite to follow-up, how did you use the health and SAM sessions? How easy was it really? Share your results."
+       ]
+      }
+     ]
+    },
+    {
+     "k": "calendar",
+     "items": [
+      {
+       "cal": [
+        [
+         "Feb 28",
+         "JL Clinic for the Launch 2 Promotion (qualification: 6+ MGs by 10 PM EST)"
+        ],
+        [
+         "Mar 4",
+         "JYT Team Evaluation Workshop"
+        ],
+        [
+         "Mar 19",
+         "JL Launch 2 Promotion festivities (Orlando, FL)"
+        ],
+        [
+         "Mar 20 to 22",
+         "In-person #ELEVATE function (Orlando, FL)"
+        ],
+        [
+         "Coming up",
+         "Go Diamond Weekend"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "k": "growth",
+     "items": [
+      {
+       "t": "A 160+ day Phase B Core Run",
+       "who": "Ting",
+       "min": 4,
+       "pts": [
+        "How you sustained a 160+ day Phase B Core Run while balancing extracurriculars, exams and a part-time job, and still had fun"
+       ]
+      },
+      {
+       "t": "#3 top user in the LLC",
+       "who": "Martin",
+       "min": 4,
+       "pts": [
+        "What it was like being the #3 top user in the whole LLC, and how consistently taking in content in the environment, paired with in-person networking, sped up your work ethic and your confidence"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "leadership",
+     "items": [
+      {
+       "t": "When a mentor comes to town",
+       "who": "Luke",
+       "min": 5,
+       "pts": [
+        "The right mindset when a mentor or coach comes to town, and how you fully booked their calendar",
+        "How anchoring yourself in mentorship and this environment carried you through life's ups and downs"
+       ]
+      },
+      {
+       "t": "Booking 10+ MG1s in two months",
+       "who": "Lister",
+       "by": "Irene",
+       "min": 5,
+       "pts": [
+        "How did you book 10+ MG1s from January to February?",
+        "What does mentorship truly look like for you?",
+        "What does doing PHP the right way mean, and why is consistency in it so important?"
+       ]
+      },
+      {
+       "t": "Networking skills + boundaries",
+       "who": "Johnny & Irene",
+       "min": 20,
+       "pts": [
+        "Level up how you handle common scenarios in networking and process meetings",
+        "How to set boundaries in life to prioritize what matters to you"
+       ]
+      }
+     ]
+    }
+   ],
+   "zoom": "515-333-3193",
+   "at": "2026-10-15T14:29:30.000Z"
+  },
+  {
+   "id": "2026-10-24",
+   "date": "2026-10-24",
+   "kind": "Workshop",
+   "title": "Go 6x15",
+   "sub": "Leadership 1 workshop · Bigger vision, higher impact",
+   "time": "2:00 to 6:00 PM ET",
+   "agenda": []
+  },
+  {
+   "id": "2026-10-30",
+   "date": "2026-10-30",
+   "kind": "HY Product Expo",
+   "title": "Glow From Within, Halloween",
+   "sub": "Personalized nutrition · Blue light skin analysis",
+   "time": "5:00 to 7:00 PM ET",
+   "where": "Cre8ive Studio, 134 W 29th St, Floor 2, Space 1-1",
+   "whereNote": "New York, NY 10001",
+   "signup": "https://unityhy.setmore.com/",
+   "agenda": [
+    {
+     "k": "volume",
+     "items": [
+      {
+       "t": "Invite before Friday",
+       "pts": [
+        "Most guests sign up in the last day or two, so push now",
+        "Guests register by booking a complimentary consultation time: unityhy.setmore.com",
+        "Invite everyone, even people who just want to hang out",
+        "Eventbrite and the Luma page (luma.com/3wgx0v0u) both send people to that booking link"
+       ]
+      },
+      {
+       "t": "Flow at the door",
+       "pts": [
+        "Booked slots go first, like a restaurant reservation; walk-ins go to whichever station is open",
+        "Greeters: small talk (comment on their costume), ask if they booked a station, walk them over",
+        "If every table is busy, chat for no more than 3 minutes",
+        "Need help closing a sale? Flag Irene"
+       ]
+      },
+      {
+       "t": "Demos",
+       "pts": [
+        "Vitamin C apple with dye (skin)",
+        "Immunity Twist Tube",
+        "XS next to milk, Red Bull and Monster, labeled and left out on the table",
+        "Nail these, don't spread thin"
+       ]
+      },
+      {
+       "t": "Drinks",
+       "pts": [
+        "$2 a cup: XS energy mocktail, or an antioxidant or detox mocktail",
+        "XS bundle: 2 cans with lime and lemon, price set by Eunice and Annice",
+        "Drink money goes to them; they make the drinks flyer"
+       ]
+      }
+     ]
+    },
+    {
+     "k": "leadership",
+     "items": [
+      {
+       "t": "Why we do this",
+       "pts": [
+        "Get comfortable inviting, so the Christmas event next month feels easy",
+        "Anyone you shared your story with who didn't partner is a customer: invite them",
+        "Get good at one table, health or skin; not on a table this time? Aim to be on one next time",
+        "The more no's you collect, the faster you get good at sales"
+       ]
+      }
+     ]
+    }
+   ],
+   "flow": [
+    [
+     "5:00 to 7:00 PM",
+     "Product Expo"
+    ],
+    [
+     "7:30 to 9:00 PM",
+     "FNH Halloween, right after"
+    ]
+   ],
+   "roles": [
+    [
+     "Check-in, line & checkout",
+     "Irene"
+    ],
+    [
+     "Health analysis",
+     "Johnny, Raymond, Tenzin"
+    ],
+    [
+     "Skin & hair analysis",
+     "Wendy, Eunice, Annice"
+    ],
+    [
+     "Drinks & XS bundle",
+     "Eunice, Annice"
+    ],
+    [
+     "XS demo display",
+     "Martin"
+    ],
+    [
+     "Demos",
+     "Vemon"
+    ],
+    [
+     "Greeters",
+     "Martin, Lister, William"
+    ]
+   ]
+  },
+  {
+   "id": "2026-12-28",
+   "date": "2026-12-28",
+   "kind": "Team trip",
+   "title": "Year End Trip 2026",
+   "sub": "First 60: $550 single, $1,500 a couple · pay Jerry by Zelle or Venmo to hold a spot",
+   "time": "Dec 28 to Jan 1 · 4 nights · arrive around 6 PM MT",
+   "where": "Scottsdale, Arizona",
+   "whereNote": "Five-star hotel downtown · Jerry has prepaid the room block",
+   "agenda": []
+  },
+  {
+   "id": "2027-11-01",
+   "date": "2027-11-01",
+   "kind": "Leadership 1 trip",
+   "title": "BBI Trip to Puerto Rico",
+   "sub": "Qualify in 2026-27 · 2 months pays 1 night, 3 months pays 2 nights",
+   "time": "Dates to be announced",
+   "where": "Puerto Rico",
+   "agenda": []
+  }
+ ]
+}

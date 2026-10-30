@@ -1,0 +1,85 @@
+{
+ "about": "Flyers for team dates, archived from the JL 3/6, JL Phase B+ and NYC Elite WhatsApp groups, and the JL monthly team calendars (PDF). A flyer is not an event of its own (Johnny, 2026-10-19): `event` names the event page in team-events.json it belongs to, and that page shows the flyer as a banner at the top (`pos` is the part of the image the banner shows). A flyer with no event yet (no date) opens only from a calendar row: a calendar row whose text contains one of a flyer's match words links to that flyer. A calendar shows as a link under the Calendar section of every event in its month (and of the month before).",
+ "flyers": [
+  {
+   "id": "go-6x15",
+   "title": "Go 6x15 · Leadership 1 workshop",
+   "when": "Sat, Oct 24, 2026",
+   "date": "2026-10-24",
+   "img": "images/team/flyers/go-6x15.jpg",
+   "alt": "Leadership 1 Go 6x15, Bigger Vision Higher Impact. Workshop Oct 24, 2026, 2 to 6 PM EST. To qualify: Phase B IBO, 600 PV GPV in Sept or Oct, or 300 PV GPV in the first October.",
+   "match": [
+    "6x15"
+   ],
+   "from": "JL Phase B+ Info Group, Jerry, 2026-10-06",
+   "event": "2026-10-24",
+   "pos": "center 18%"
+  },
+  {
+   "id": "glow-halloween-2026",
+   "title": "Glow From Within, Halloween · HY Product Expo",
+   "when": "Fri, Oct 30, 2026",
+   "date": "2026-10-30",
+   "img": "images/team/flyers/glow-halloween-2026.jpg",
+   "alt": "Glow From Within, Halloween edition. Feel good, look good, live well. Health and nutrition: personalized nutrition. Skincare: blue light skin analysis. Friday, Oct 30, 5:00 to 7:30 PM, 134 W 29th St, Floor 2, Space 1-1, New York, NY 10001. QR code to RSVP.",
+   "match": [
+    "product expo",
+    "glow from within"
+   ],
+   "from": "NYC Elite Networking Circle, Wendy, 2026-10-11",
+   "event": "2026-10-30",
+   "pos": "center 12%"
+  },
+  {
+   "id": "year-end-trip-2026",
+   "title": "Year End Trip 2026 · Scottsdale, AZ",
+   "when": "Dec 28 to Jan 1",
+   "date": "2026-12-28",
+   "img": "images/team/flyers/year-end-trip-2026.jpg",
+   "alt": "Year End Trip 2026, Scottsdale, Arizona. Five-star hotel downtown, Dec 28 to Jan 1, 4 nights. First 60 people $550 single, $1,500 per couple; the rate goes up after that. Pay Jerry by Zelle or Venmo to hold a spot. Arrive Dec 28 around 6 PM, leave Jan 1.",
+   "match": [
+    "year end trip",
+    "scottsdale"
+   ],
+   "from": "JL 3/6 group, Johnny, 2026-10-06",
+   "event": "2026-12-28",
+   "pos": "center 48%"
+  },
+  {
+   "id": "bbi-puerto-rico",
+   "title": "BBI Trip to Puerto Rico",
+   "when": "Around November 2027",
+   "date": "",
+   "img": "images/team/flyers/bbi-puerto-rico.jpg",
+   "alt": "The Leadership 1 BBI Trip to Puerto Rico. New BBI in 2026-27: 1 month qualification, 2 months (1 night room paid), 3 months (2 nights room paid). Old BBI qualifiers: one leg qualifies for the BBI trip and one more leg BFI, a new 7500 PV month in 2026-27, or qualified Platinums in 2026-27.",
+   "match": [
+    "puerto rico"
+   ],
+   "from": "JL Phase B+ Info Group, Jerry, 2026-08-31",
+   "event": "2027-11-01",
+   "pos": "center 22%"
+  },
+  {
+   "id": "rensheng-xiulian-2026-10-25",
+   "title": "人生修炼局 · online sharing",
+   "when": "Sun, Oct 25, 2026",
+   "date": "2026-10-25",
+   "img": "images/team/flyers/rensheng-xiulian-2026-10-25.jpg",
+   "alt": "人生修炼局: 找准自己，把钱和人生想明白. Sunday Oct 25, 8:00 to 9:00 PM Beijing time on 腾讯会议. Speakers Johnny & Irene (金融大厂AI转型副总裁, Fintech独角兽运营总监, 12年跨国创业者) and Jerry & Leann (华尔街投行总监, 前华尔街高级数据分析师, 14年跨国创业者). QR code to sign up.",
+   "match": [
+    "人生修炼局"
+   ],
+   "from": "Johnny, 2026-10-18",
+   "event": "2026-10-25",
+   "pos": "center 20%"
+  }
+ ],
+ "calendars": [
+  {
+   "month": "2026-10",
+   "title": "JL Team Calendar, October 2026",
+   "file": "files/team/jl-team-calendar-2026-10.pdf",
+   "from": "JL Phase B+ Info Group, Eunice, 2026-10-08"
+  }
+ ]
+}
