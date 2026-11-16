@@ -71,6 +71,21 @@
    "from": "Johnny, 2026-10-18",
    "event": "2026-10-25",
    "pos": "center 20%"
+  },
+  {
+   "id": "bam-2026-12",
+   "title": "Business Attitude & Mindset · Spartans BAM",
+   "when": "Sat, Dec 12, 2026 (New Jersey)",
+   "date": "2026-12-12",
+   "img": "images/team/flyers/bam-2026.jpg",
+   "alt": "Spartans presents Business Attitude and Mindset. Build the right mindset, lead with attitude, grow your business. December BAM cities, dates and speakers: Atlanta Sat Dec 12 Jwalant and Asha Vakil; Bay Area Sun Dec 13 and Seattle Sat Dec 12 Anand and Pushpa Savulgay; Milwaukee Sat Dec 5 and New Jersey Sat Dec 12 Mason and Ali Eddy; Dallas Sun Dec 6 and Houston Sat Dec 5 Craig and Carrie Clickner; Detroit Sun Dec 13 and Toronto Sat Dec 12 Prashant and Vaneeta Aggarwal; Edmonton Sun Dec 6 and Vancouver Sat Dec 5 J P and Ritu Kapoor; Los Angeles Sun Dec 6 and Phoenix Sat Dec 5 Vijay and Keya Subramanyan; no BAM in Orlando.",
+   "match": [
+    "business attitude",
+    "bam"
+   ],
+   "from": "JL Team Calendar, Nov 2026",
+   "event": "2026-12-12",
+   "pos": "center 30%"
   }
  ],
  "calendars": [
@@ -79,6 +94,12 @@
    "title": "JL Team Calendar, October 2026",
    "file": "files/team/jl-team-calendar-2026-10.pdf",
    "from": "JL Phase B+ Info Group, Eunice, 2026-10-08"
+  },
+  {
+   "month": "2026-11",
+   "title": "JL Team Calendar, November 2026",
+   "file": "files/team/jl-team-calendar-2026-11.pdf",
+   "from": "Johnny, Downloads, 2026-11-16"
   }
  ]
 }
