@@ -232,6 +232,18 @@ ul.cal .k{color:var(--muted)} ul.cal .cw{display:block} ul.cal .cd{display:block
 #upd{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:90;display:flex;align-items:center;gap:12px;background:var(--btn);color:var(--btn-ink);border-radius:999px;padding:8px 10px 8px 18px;font-size:14px;font-weight:600;max-width:calc(100% - 24px)}
 #upd[hidden]{display:none}
 #upd button{font:inherit;font-size:13px;font-weight:700;background:var(--accent);color:var(--on-accent);border:0;border-radius:999px;padding:7px 14px;cursor:pointer;white-space:nowrap}
+/* about, itinerary, good to know */
+.about p{margin:0 0 10px;color:var(--ink-2);font-size:15px}
+.itin .day{border:1px solid var(--line);border-radius:14px;background:var(--card);margin:0 0 12px;overflow:hidden}
+.itin .dh{font-size:13.5px;color:var(--muted);padding:9px 14px;background:var(--card-2);border-bottom:1px solid var(--line)} .itin .dh b{color:var(--ink)}
+.itin .ii{display:grid;grid-template-columns:92px minmax(0,1fr);gap:12px;padding:10px 14px;border-bottom:1px solid var(--line);font-size:14.5px}
+.itin .ii:last-child{border-bottom:0}
+.itin .tm{color:var(--accent-ink);font-weight:600;font-size:13.5px;font-variant-numeric:tabular-nums}
+.itin b{font-weight:600} .itin b a:hover{text-decoration:underline} .itin small{display:block;color:var(--muted);font-size:13px;margin-top:1px}
+.faq details{border-bottom:1px solid var(--line);padding:10px 0}
+.faq summary{cursor:pointer;font-weight:600;font-size:14.5px;list-style:none;display:flex;justify-content:space-between;gap:10px}
+.faq summary::-webkit-details-marker{display:none} .faq summary:after{content:"+";color:var(--muted);font-weight:400} .faq details[open] summary:after{content:"−"}
+.faq p{margin:6px 0 0;color:var(--ink-2);font-size:14px}
 /* phone */
 @media (max-width:760px){
   .top{gap:12px} .top .logo b{display:none} .top nav{gap:12px}
@@ -241,6 +253,7 @@ ul.cal .k{color:var(--muted)} ul.cal .cw{display:block} ul.cal .cd{display:block
   .epage{grid-template-columns:minmax(0,1fr);gap:22px} .cover{max-width:440px} .cover.nofl{aspect-ratio:16/7} .cover.nofl .gen{font-size:24px} .ep h1{font-size:30px}
   .epage > div:first-child{display:contents} .epage .mng{order:1;margin-top:0} .epage .ep{order:2} .epage .side{order:3}
   .ovt{font-size:12.5px} .ovt td + td{padding-left:8px}
+  .itin .ii{grid-template-columns:76px minmax(0,1fr);gap:10px;padding:10px 12px}
   .chip{white-space:nowrap}
   .crew{grid-template-columns:repeat(2,minmax(0,1fr))}
   .qa{grid-template-columns:1fr} .mcard{grid-template-columns:1fr}
@@ -263,7 +276,7 @@ ul.cal .k{color:var(--muted)} ul.cal .cw{display:block} ul.cal .cd{display:block
 /* The pre-commit hook in the pm-final clone rewrites this time on every commit that touches this
    file. The version check at the bottom reads it, and the script text, to tell an old copy of
    this page from the newest one (DiamondA70/_skills/app-qa/references/self-update.md). */
-const BUILD = "2026-11-15T16:41:40Z";
+const BUILD = "2026-11-16T03:26:25Z";
 const SELF = document.currentScript ? document.currentScript.textContent : "";
 
 /* The agendas: data/team-events.json next to this page, read fresh through the API (GitHub Pages
@@ -674,6 +687,14 @@ function agendaText(e){
       if(x.k === "calendar") calsFor(e).forEach(function(c){ L.push("📅 " + c.label.replace(" (PDF)", "") + ": " + siteURL(c.file)); });
     });
   }
+  const days = itinDays(e);
+  if(days.length){
+    L.push("", "*ITINERARY*");
+    days.forEach(function(g, i){
+      L.push("", "*Day " + (i + 1) + (g[0] ? " · " + dayName(g[0]) : "") + "*");
+      g[1].forEach(function(r){ L.push("• " + [r[1], r[2]].filter(Boolean).join(" · ") + (r[3] ? " (" + r[3] + ")" : "")); });
+    });
+  }
   L.push("", "Full agenda: " + location.origin + location.pathname + "#" + e.id);
   return L.join("\n");
 }
@@ -830,15 +851,51 @@ function viewHTML(e){
     +   '<button type="button" class="big' + (e.signup ? ' sec' : '') + '" data-act="copy">Copy agenda for WhatsApp</button>'
     +   (admin() ? '<button type="button" class="big sec" data-act="edit">Edit event</button>' : '')
     + '</div></div>'
+    + aboutHTML(e)
     + (e.flow && e.flow.length ? '<div class="sech">Overview</div>' + overviewHTML(e.flow) : '')
+    + itinHTML(e)
     + (roles.length ? '<div class="sech">Roles</div><div class="crew">' + roles.map(function(r){
         const m = /^(.*?)\s*\((.+)\)\s*$/.exec(r[0]);          /* "Online CEO (Chief Energy Officer)" */
         return '<div><span>' + esc(m ? m[1] : r[0]) + '</span>' + (r[1] ? '<b>' + esc(r[1]) + '</b>' : '<b class="tbc">To be confirmed</b>')
           + (m ? '<i>' + esc(m[2]) + '</i>' : '') + '</div>';
       }).join("") + '</div><p class="glink"><a href="guide.html">Hosting & participant guide</a></p>' : '')
-    + '<div class="sech">' + esc(e.agendaTitle || "Agenda") + (total ? '<span>' + fmtMin(total) + ' min planned</span>' : '') + '</div>'
-    + agendaHTML(e, secs);
+    + (secs.length || !itinDays(e).length ? '<div class="sech">' + esc(e.agendaTitle || "Agenda") + (total ? '<span>' + fmtMin(total) + ' min planned</span>' : '') + '</div>'
+        + agendaHTML(e, secs) : '')
+    + faqHTML(e);
   return '<div class="epage"><div>' + left + '</div><div class="ep">' + right + '</div></div>';
+}
+
+/* About, Itinerary and Good to know (Johnny, 2026-11-16: build out the detail pages for the product
+   party, the BAM session and the year-end trip). All three are optional and typed in the editor.
+   About: paragraphs, a blank line between them. Itinerary: one line per stop, "date | time | what |
+   note | link", grouped into days by the date. Good to know: "question | answer". */
+function aboutHTML(e){
+  const a = String(e.about || "").trim(); if(!a) return "";
+  return '<div class="sech">About</div><div class="about">' + a.split(/\n\s*\n/).map(function(p){
+    return '<p>' + esc(p.trim()).replace(/\n/g, "<br>") + '</p>'; }).join("") + '</div>';
+}
+function itinDays(e){
+  const by = {}, order = [];
+  (e.days || []).forEach(function(r){ const d = r[0] || ""; if(!by[d]){ by[d] = []; order.push(d); } by[d].push(r); });
+  return order.sort().map(function(d){ return [d, by[d]]; });
+}
+function dayName(d){ return /^\d{4}-\d{2}-\d{2}$/.test(d) ? asDate(d).toLocaleDateString("en-US", { weekday: "long", month: "short", day: "numeric" }) : d; }
+function safeLink(u){ return /^https?:\/\//i.test(u || "") ? u : ""; }
+function itinHTML(e){
+  const days = itinDays(e); if(!days.length) return "";
+  return '<div class="sech">Itinerary<span>' + days.length + ' day' + (days.length === 1 ? '' : 's') + '</span></div><div class="itin">' + days.map(function(g, i){
+    return '<div class="day"><div class="dh"><b>Day ' + (i + 1) + '</b>' + (g[0] ? ' · ' + esc(dayName(g[0])) : '') + '</div>'
+      + g[1].map(function(r){
+          const ln = safeLink(r[4]);
+          return '<div class="ii"><span class="tm">' + esc(r[1]) + '</span><div><b>' + (ln ? '<a href="' + esc(ln) + '" target="_blank" rel="noopener">' + esc(r[2]) + ' ↗</a>' : esc(r[2])) + '</b>'
+            + (r[3] ? '<small>' + esc(r[3]) + '</small>' : '') + '</div></div>';
+        }).join("") + '</div>';
+  }).join("") + '</div>';
+}
+function faqHTML(e){
+  const f = (e.faq || []).filter(function(r){ return r[0]; }); if(!f.length) return "";
+  return '<div class="sech">Good to know</div><div class="faq">' + f.map(function(r){
+    return '<details><summary>' + esc(r[0]) + '</summary><p>' + esc(r[1]) + '</p></details>'; }).join("") + '</div>';
 }
 function agendaHTML(e, secs){
   if(!secs.length) return '<p class="empty" style="padding:16px 0">The agenda is coming.</p>';
@@ -871,7 +928,7 @@ function guestsOf(e){
 function manageHTML(e, tab){
   const link = siteURL("#" + e.id), z = zoomBits(e);
   let body = "";
-  if(tab === "agenda") body = '<p class="mnote">This is the agenda everyone sees. Change it with Edit event.</p>' + agendaHTML(e, sectionsOf(e))
+  if(tab === "agenda") body = '<p class="mnote">This is the agenda everyone sees. Change it with Edit event.</p>' + aboutHTML(e) + itinHTML(e) + (sectionsOf(e).length || !itinDays(e).length ? agendaHTML(e, sectionsOf(e)) : '') + faqHTML(e)
     + '<div class="btn2"><button type="button" class="mbtn" data-act="edit">' + ICO.pen + ' Edit agenda</button><button type="button" class="mbtn" data-act="copy">Copy agenda</button></div>';
   else if(tab === "roles"){
     const roles = rolesOf(e);
@@ -1013,7 +1070,11 @@ function renderEditor(){
     +   field("signup", "Sign-up link <i>(optional, https://…)</i>", d.signup, { full: true, ph: "https://f.kdocs.cn/g/…" })
     +   field("agendaTitle", "Agenda heading <i>(blank = Agenda)</i>", d.agendaTitle)
     + '</div>'
-    + '<h2>Overview</h2>' + field("flow", "One per line: time | what", fmtRows(d.flow), { area: true, full: true, rows: (d.flow || []).length + 1, ph: "7:30 to 9:00 PM | All partners" })
+    + '<h2>About</h2>' + field("about", "A short description <i>(blank line between paragraphs)</i>", d.about, { area: true, full: true, rows: 4 })
+    + '<h2>Itinerary <i style="font-weight:400;font-size:13px;color:var(--muted)">(trips and multi-day events)</i></h2>'
+    + field("days", "One per line: date | time | what | note | link", fmtRows(d.days), { area: true, full: true, rows: Math.max(3, (d.days || []).length + 1), ph: "2026-12-28 | 7:30 PM | Welcome dinner | Old Town, split the bill |" })
+    + '<h2>Good to know</h2>' + field("faq", "One per line: question | answer", fmtRows(d.faq), { area: true, full: true, rows: Math.max(2, (d.faq || []).length + 1), ph: "What should I wear? | Business casual" })
+    + '<h2>Overview</h2>' + field("flow","One per line: time | what", fmtRows(d.flow), { area: true, full: true, rows: (d.flow || []).length + 1, ph: "7:30 to 9:00 PM | All partners" })
     + '<h2>Roles</h2><div class="grid2">' + (function(){
         const rs = roleSlots(d);
         return STD_ROLES.map(function(r){ return field("role_" + r[0], esc(r[1]), rs.std[r[0]] || "", { ph: "To be confirmed" }); }).join("")
@@ -1039,6 +1100,9 @@ function collect(){
   const d = EDIT.draft;
   ["title", "sub", "kind", "date", "time", "where", "whereNote", "zoom", "pass", "signup", "dress", "agendaTitle"].forEach(function(k){ d[k] = v(k).trim(); });
   d.flow = parseRows(v("flow"), 2);
+  d.about = v("about").trim();
+  d.days = parseRows(v("days"), 5).map(function(r){ const a = r.slice(); while(a.length > 3 && !a[a.length - 1]) a.pop(); return a; });
+  d.faq = parseRows(v("faq"), 2);
   d.roles = STD_ROLES.map(function(r){ return [r[1], v("role_" + r[0]).trim()]; }).filter(function(r){ return r[1]; })
     .concat(parseRows(v("rolesx"), 2));
   d.agenda = Array.prototype.map.call(f.querySelectorAll(".sece"), function(se){
