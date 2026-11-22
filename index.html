@@ -325,7 +325,7 @@ h1,.sub,.sech,.run .rh{text-shadow:0 1px 12px rgba(0,0,0,.3)}
 /* The pre-commit hook in the pm-final clone rewrites this time on every commit that touches this
    file. The version check at the bottom reads it, and the script text, to tell an old copy of
    this page from the newest one (DiamondA70/_skills/app-qa/references/self-update.md). */
-const BUILD = "2026-11-22T01:25:12Z";
+const BUILD = "2026-11-22T01:32:30Z";
 const SELF = document.currentScript ? document.currentScript.textContent : "";
 
 /* The agendas: data/team-events.json next to this page, read fresh through the API (GitHub Pages
@@ -378,8 +378,14 @@ function isFNH(e){ return !e.kind || /fnh|friday/i.test(e.kind); }
    save API keeps only known fields, so this rides on kind). */
 function isCall(e){ return /orientation|conference call/i.test(e.kind || ""); }
 /* Johnny's Nov 22 agenda: one minute between talks for the handoff (9:00–9:04, 9:05–9:10 …).
-   Minutes are the talk's own length; the handoff minute comes on top. */
+   Minutes are the talk's own length; the handoff minute comes on top, and only when the speaker
+   changes (Jerry & Leann go straight from their talk into the Q&A at 9:50). */
 const HANDOFF = 1;
+function handoffs(rows){
+  let n = 0, prev = null;
+  rows.forEach(function(r){ if(!r.min) return; if(prev && speakerText(prev.it) !== speakerText(r.it)) n++; prev = r; });
+  return n;
+}
 function isBreak(p){ return typeof p === "string" && /^\s*-{2,}\s*$/.test(p); }
 function callRows(e){
   const m = TIME_RE.exec(e.time || ""); let t = m ? tmin(m[1], m[2], m[3] || m[6]) : null;
@@ -387,7 +393,8 @@ function callRows(e){
   sectionsOf(e).forEach(function(x){ x.items.forEach(function(it){
     const n = itemMin(it), r = { it: it, min: n, at: "" };
     if(t != null && n){
-      if(rows.some(function(q){ return q.min; })) t += HANDOFF;
+      const last = rows.filter(function(q){ return q.min; }).pop();
+      if(last && speakerText(last.it) !== speakerText(it)) t += HANDOFF;
       const a = tfmt(t, true), b = tfmt(t + n, true);
       r.at = a.t + (a.ap === b.ap ? "" : " " + a.ap) + "–" + b.t + " " + b.ap; t += n;
     }
@@ -480,7 +487,7 @@ const NIGHTS = {
       agendaTitle: "New IBO Orientation", flow: [],
       roles: [["Host", ""], ["Timekeeper", ""]],
       agenda: [
-        { k: "intro", items: [{ t: "Welcome and new apprentices", min: 5, pts: [["Each new apprentice, one line", ["Name · City · Who you are building with · What you are excited about"]]] }] },
+        { k: "intro", items: [{ t: "Welcome and new apprentices", min: 5, pts: [["Each new apprentice, one line", ["Name · City · Who you are building with · What you are excited about · Fun fact about yourself"]]] }] },
         { k: "growth", items: [{ t: "Getting the most out of books, audios and events", min: 7 }, { t: "PHP and working with your upline", min: 8 }] },
         { k: "volume", items: [{ t: "Volume: from 100% personal use to your first customer", min: 10 }] },
         { k: "leadership", items: [{ t: "Building your network: common mistakes, and getting through lows and rejection", min: 10 },
@@ -972,8 +979,8 @@ function zoomBits(e){
 }
 function viewHTML(e){
   const z = zoomBits(e), secs = sectionsOf(e), fl = flyerOf(e), cal = calOf(e), roles = rolesOf(e);
-  const timed = isCall(e) ? callRows(e).filter(function(r){ return r.min; }).length : 0;
-  const total = secs.reduce(function(n, x){ return n + minsOf(x.items); }, 0) + Math.max(0, timed - 1) * HANDOFF, st = statusOf(e);
+  const gaps = isCall(e) ? handoffs(callRows(e)) : 0;
+  const total = secs.reduce(function(n, x){ return n + minsOf(x.items); }, 0) + gaps * HANDOFF, st = statusOf(e);
   const left = (fl ? '<button type="button" class="cover" data-flyer="' + esc(fl.id) + '" title="See the whole flyer">' + coverHTML(e, true) + '<span class="see">See the flyer</span></button>'
       : '<div class="cover nofl">' + coverHTML(e, true) + '</div>')
     + (admin() ? '<div class="mng"><span>You can manage this event.</span><a class="mbtn acc" href="#' + esc(e.id) + '/manage">Manage →</a></div>' : '')
