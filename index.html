@@ -325,7 +325,7 @@ h1,.sub,.sech,.run .rh{text-shadow:0 1px 12px rgba(0,30,90,.25)}
 /* The pre-commit hook in the pm-final clone rewrites this time on every commit that touches this
    file. The version check at the bottom reads it, and the script text, to tell an old copy of
    this page from the newest one (DiamondA70/_skills/app-qa/references/self-update.md). */
-const BUILD = "2026-11-22T01:01:32Z";
+const BUILD = "2026-11-22T01:06:50Z";
 const SELF = document.currentScript ? document.currentScript.textContent : "";
 
 /* The agendas: data/team-events.json next to this page, read fresh through the API (GitHub Pages
@@ -398,7 +398,7 @@ function callHTML(e){
     return '<li>' + (r.at ? '<div class="rt">' + esc(r.at) + '</div>' : '')
       + (r.it.t ? '<p class="rh">' + esc(r.it.t) + '</p>' : '')
       + (r.it.pts && r.it.pts.length ? pointsHTML(r.it.pts) : '')
-      + (sp || r.min ? '<p class="rs">🎙 ' + esc([sp, r.min ? fmtMin(r.min) + " min" : ""].filter(Boolean).join(" · ")) + '</p>' : '')
+      + (sp ? '<p class="rs">🎙 ' + esc([sp, r.min ? fmtMin(r.min) + " min" : ""].filter(Boolean).join(" · ")) + '</p>' : '')
       + '</li>';
   }).join("") + '</ol>';
 }
@@ -416,17 +416,20 @@ function callText(e){
   });
   L.push("📸 Log in a few minutes early and keep your camera on the whole time");
   L.push("👏 Each speaker introduces the next speaker, so please come prepared");
+  /* Johnny's own edit of the copy (2026-11-22): the speaker and minutes sit right after the bold
+     title on the same line ("*9:05–9:12 PM  Topic* 🎙 Johnny · 5 min"); a talk with no speaker (the
+     welcome) has none; the link follows the last divider with no blank line. */
   callRows(e).forEach(function(r){
     const sp = speakerText(r.it);
     L.push("━━━━━━━━━━━━━━");
-    L.push("*" + [r.at, r.it.t].filter(Boolean).join("  ") + "*");
+    L.push("*" + [r.at, r.it.t].filter(Boolean).join("  ") + "*"
+      + (sp ? " 🎙 " + [sp, r.min ? fmtMin(r.min) + " min" : ""].filter(Boolean).join(" · ") : ""));
     (r.it.pts || []).forEach(function(p){
       if(Array.isArray(p)){ L.push(p[0]); (p[1] || []).forEach(function(q){ L.push("   " + q); }); }
       else L.push(p);
     });
-    if(sp || r.min) L.push("🎙 " + [sp, r.min ? fmtMin(r.min) + " min" : ""].filter(Boolean).join(" · "));
   });
-  L.push("━━━━━━━━━━━━━━", "", "Full agenda: " + location.origin + location.pathname + "#" + e.id);
+  L.push("━━━━━━━━━━━━━━", "Full agenda: " + location.origin + location.pathname + "#" + e.id);
   return L.join("\n");
 }
 const READ = "What you read, 1 or 2 major takeaways, 1 or 2 things you are implementing";
@@ -472,7 +475,7 @@ const NIGHTS = {
       agendaTitle: "New IBO Orientation", flow: [],
       roles: [["Host", ""], ["Timekeeper", ""]],
       agenda: [
-        { k: "intro", items: [{ t: "Welcome and new apprentices", min: 5 }] },
+        { k: "intro", items: [{ t: "Welcome and new apprentices", min: 5, pts: [["Each new apprentice, one line", ["Name · City · Who you are building with · What you are excited about · 1 fun fact"]]] }] },
         { k: "growth", items: [{ t: "Getting the most out of books, audios and events", min: 7 }, { t: "PHP and working with your upline", min: 8 }] },
         { k: "volume", items: [{ t: "Volume: from 100% personal use to your first customer", min: 10 }] },
         { k: "leadership", items: [{ t: "Building your network: common mistakes, and getting through lows and rejection", min: 10 },
