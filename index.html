@@ -300,7 +300,10 @@ ul.cal .k{color:var(--muted)} ul.cal .cw{display:block} ul.cal .cd{display:block
 html{background:#1B2A44}
 body{background:transparent}
 .back{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:#1B2A44 center/cover no-repeat}
-.back video{position:absolute;inset:-12px;width:calc(100% + 24px);height:calc(100% + 24px);object-fit:cover;opacity:0;transition:opacity .9s ease;filter:blur(2.5px) saturate(1.1)}
+/* Johnny, 2026-11-22: blurrier, so the footage is a mood and not a distraction. The still frame
+   is blurred the same way, and both overhang the screen so the blur has no soft edge. */
+.back:before{content:"";position:absolute;inset:-48px;background:inherit;filter:blur(12px)}
+.back video{position:absolute;inset:-48px;width:calc(100% + 96px);height:calc(100% + 96px);object-fit:cover;opacity:0;transition:opacity .9s ease;filter:blur(12px) saturate(1.15)}
 .back video.on{opacity:1}
 .back:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,14,28,.62) 0%,rgba(8,14,28,.5) 45%,rgba(8,14,28,.62) 100%)}
 body{text-shadow:0 1px 3px rgba(0,0,0,.3)}
@@ -325,7 +328,7 @@ h1,.sub,.sech,.run .rh{text-shadow:0 1px 12px rgba(0,0,0,.3)}
 /* The pre-commit hook in the pm-final clone rewrites this time on every commit that touches this
    file. The version check at the bottom reads it, and the script text, to tell an old copy of
    this page from the newest one (DiamondA70/_skills/app-qa/references/self-update.md). */
-const BUILD = "2026-11-22T01:32:30Z";
+const BUILD = "2026-11-22T01:37:58Z";
 const SELF = document.currentScript ? document.currentScript.textContent : "";
 
 /* The agendas: data/team-events.json next to this page, read fresh through the API (GitHub Pages
@@ -617,13 +620,16 @@ function calOf(e){
 /* The moving background for each calendar (see the note above .back in the styles). */
 const BACKS = { team: "sky", expo: "blossom", trips: "waves", work: "forest" };
 let BACK = "";
+const BACK_SPEED = 0.5;
 function setBack(calId){
   const k = BACKS[calId] || "sky"; if(k === BACK) return; BACK = k;
   const b = $("back"), v = $("backv"); if(!b || !v) return;
   b.style.backgroundImage = "url(video/" + k + ".jpg)";
   if(matchMedia("(prefers-reduced-motion: reduce)").matches){ v.removeAttribute("src"); v.classList.remove("on"); return; }
   v.classList.remove("on");
-  v.oncanplay = function(){ if(BACK === k){ v.classList.add("on"); v.play().catch(function(){}); } };
+  /* half speed (Johnny, 2026-11-22: "move slower"); load() resets the rate, so set it on every play */
+  v.oncanplay = function(){ if(BACK === k){ v.playbackRate = BACK_SPEED; v.classList.add("on"); v.play().catch(function(){}); } };
+  v.onplay = function(){ v.playbackRate = BACK_SPEED; };
   v.src = "video/" + k + ".mp4"; v.load();
 }
 function backFor(r){
