@@ -148,6 +148,12 @@ h1{font-size:32px;font-weight:700;letter-spacing:-.02em;margin:0;line-height:1.1
 .ag h3{font-size:15.5px;margin:0 0 6px;display:flex;justify-content:space-between;gap:10px}
 .ag h3 span{font-size:12.5px;font-weight:500;color:var(--muted)}
 .it{padding:7px 0;border-bottom:1px solid var(--line)}
+.run{list-style:none;margin:0;padding:0}
+.run li{padding:14px 0;border-bottom:1px solid var(--line)}
+.run .rt{font-size:12.5px;font-weight:600;color:var(--muted);letter-spacing:.02em}
+.run .rh{margin:3px 0 0;font-size:15.5px;font-weight:600}
+.run ul{margin:6px 0 0;padding-left:20px} .run ul li{padding:2px 0;border:0;font-size:14.5px}
+.run .rs{margin:8px 0 0;font-size:13.5px;color:var(--ink-2)}
 .it .ih{margin:0;font-size:14.5px} .it .iw{color:var(--ink-2)} .it .im{color:var(--muted);font-size:13px} .it .sep{color:var(--muted)}
 .it ul{margin:4px 0 0;padding-left:20px;color:var(--ink-2);font-size:14px} .it ul ul{margin-top:2px}
 ul.cal{list-style:none;padding:0;margin:0}
@@ -288,7 +294,7 @@ ul.cal .k{color:var(--muted)} ul.cal .cw{display:block} ul.cal .cd{display:block
 /* The pre-commit hook in the pm-final clone rewrites this time on every commit that touches this
    file. The version check at the bottom reads it, and the script text, to tell an old copy of
    this page from the newest one (DiamondA70/_skills/app-qa/references/self-update.md). */
-const BUILD = "2026-11-16T08:52:32Z";
+const BUILD = "2026-11-22T00:59:09Z";
 const SELF = document.currentScript ? document.currentScript.textContent : "";
 
 /* The agendas: data/team-events.json next to this page, read fresh through the API (GitHub Pages
@@ -334,6 +340,64 @@ function roleSlots(e){
   return { std: std, extra: extra };
 }
 function isFNH(e){ return !e.kind || /fnh|friday/i.test(e.kind); }
+/* A conference call (Johnny, 2026-11-22, after Leann's Chinese-market New IBO orientation): not an FNH.
+   No sections, no overview table, no dress guide. One run of show where every talk has its clock
+   time, a title, the questions it answers, and the speaker with their minutes. The host keeps time,
+   and each speaker introduces the next one. Any Orientation or "Conference call" kind is one (the
+   save API keeps only known fields, so this rides on kind). */
+function isCall(e){ return /orientation|conference call/i.test(e.kind || ""); }
+function callRows(e){
+  const m = TIME_RE.exec(e.time || ""); let t = m ? tmin(m[1], m[2], m[3] || m[6]) : null;
+  const rows = [];
+  sectionsOf(e).forEach(function(x){ x.items.forEach(function(it){
+    const n = itemMin(it), r = { it: it, min: n, at: "" };
+    if(t != null && n){
+      const a = tfmt(t, true), b = tfmt(t + n, true);
+      r.at = a.t + (a.ap === b.ap ? "" : " " + a.ap) + "–" + b.t + " " + b.ap; t += n;
+    }
+    rows.push(r);
+  }); });
+  return rows;
+}
+function callHTML(e){
+  const rows = callRows(e);
+  if(!rows.length) return '<p class="empty" style="padding:16px 0">The agenda is coming.</p>';
+  return '<ol class="run">' + rows.map(function(r){
+    const sp = speakerText(r.it);
+    return '<li>' + (r.at ? '<div class="rt">' + esc(r.at) + '</div>' : '')
+      + (r.it.t ? '<p class="rh">' + esc(r.it.t) + '</p>' : '')
+      + (r.it.pts && r.it.pts.length ? pointsHTML(r.it.pts) : '')
+      + (sp || r.min ? '<p class="rs">🎙 ' + esc([sp, r.min ? fmtMin(r.min) + " min" : ""].filter(Boolean).join(" · ")) + '</p>' : '')
+      + '</li>';
+  }).join("") + '</ol>';
+}
+function callText(e){
+  const L = [];
+  L.push("*【" + e.title.toUpperCase() + "】*");
+  if(e.sub) L.push(e.sub);
+  L.push("");
+  L.push("📅 " + whenLong(e) + (e.time ? ", " + e.time : ""));
+  if(e.time){ const z = otherZones(e.time); if(z) L.push("      " + z); }
+  if(e.zoom) L.push("💻 Zoom " + e.zoom + (e.pass ? ", passcode " + e.pass : "") + ": https://zoom.us/j/" + e.zoom.replace(/\D/g, ""));
+  rolesOf(e).forEach(function(r){
+    const ic = /ceo/i.test(r[0]) ? "⚡" : /time/i.test(r[0]) ? "⏱" : "🎤";
+    L.push(ic + " " + r[0].replace(/\s*\(.*\)\s*$/, "") + ": " + (r[1] || "To be confirmed"));
+  });
+  L.push("📸 Log in a few minutes early and keep your camera on the whole time");
+  L.push("👏 Each speaker introduces the next speaker, so please come prepared");
+  callRows(e).forEach(function(r){
+    const sp = speakerText(r.it);
+    L.push("━━━━━━━━━━━━━━");
+    L.push("*" + [r.at, r.it.t].filter(Boolean).join("  ") + "*");
+    (r.it.pts || []).forEach(function(p){
+      if(Array.isArray(p)){ L.push(p[0]); (p[1] || []).forEach(function(q){ L.push("   " + q); }); }
+      else L.push(p);
+    });
+    if(sp || r.min) L.push("🎙 " + [sp, r.min ? fmtMin(r.min) + " min" : ""].filter(Boolean).join(" · "));
+  });
+  L.push("━━━━━━━━━━━━━━", "", "Full agenda: " + location.origin + location.pathname + "#" + e.id);
+  return L.join("\n");
+}
 const READ = "What you read, 1 or 2 major takeaways, 1 or 2 things you are implementing";
 const LISTEN = "What you listened to, 1 or 2 major takeaways, 1 or 2 things you are implementing";
 const ORIENT_INTRO = [["New apprentices since the last orientation", ["Name · City · Who you are building with · What you are excited about · One fun fact about yourself"]]];
@@ -369,17 +433,19 @@ const NIGHTS = {
         { k: "leadership", items: [{ min: 15 }, { min: 20 }] }
       ]
     }; } },
-  orientation: { name: "New Apprentice Orientation", about: "Saturday 8:00 to 9:00 PM on Zoom, camera on. Welcome, growth, volume, then mentorship, networking, first 90 days and Q&A.", day: 6,
+  /* Johnny, 2026-11-22: an orientation is a conference call, run like Leann's (see isCall). */
+  orientation: { name: "New IBO Orientation", about: "A conference call on Zoom, camera on. One run of show: each talk answers the questions new partners have in their first 30 days.", day: 0,
     make: function(date){ return {
-      date: date, kind: "Orientation", title: "HY Saturday Night Hangout", sub: monthName(date) + " New Apprentice Orientation",
-      time: "8:00 to 9:00 PM ET", where: "Zoom only", whereNote: "", zoom: ZOOM_DEFAULT, pass: "", dress: "Business casual, camera on",
-      agendaTitle: "New IBO Orientation", flow: [["7:55 to 8:00 PM", "Check in"], ["8:00 to 9:00 PM", "All partners"]],
-      roles: [],
+      date: date, kind: "Orientation", title: "New IBO Orientation", sub: "For new apprentices, and what everyone needs to hear in their first 30 days",
+      time: "9:00 to 10:00 PM ET", where: "Zoom only", whereNote: "", zoom: ZOOM_DEFAULT, pass: "", dress: "",
+      agendaTitle: "New IBO Orientation", flow: [],
+      roles: [["Host", ""], ["Timekeeper", ""]],
       agenda: [
-        { k: "intro", items: [{ min: 3 }] },
-        { k: "growth", items: [{ t: "Book", min: 2, pts: [READ] }, { t: "Audio", min: 2, pts: [LISTEN] }] },
-        { k: "volume", items: [{ min: 10 }] },
-        { k: "leadership", items: [{ t: "Mentorship", min: 5 }, { t: "Networking", min: 10 }, { t: "First 90 days", min: 15 }, { t: "Open Q&A", min: 8 }] }
+        { k: "intro", items: [{ t: "Welcome and new apprentices", min: 5 }] },
+        { k: "growth", items: [{ t: "Getting the most out of books, audios and events", min: 7 }, { t: "PHP and working with your upline", min: 8 }] },
+        { k: "volume", items: [{ t: "Volume: from 100% personal use to your first customer", min: 10 }] },
+        { k: "leadership", items: [{ t: "Building your network: common mistakes, and getting through lows and rejection", min: 10 },
+          { t: "When family and friends push back", min: 8 }, { t: "Building belief and self-image", min: 12 }] }
       ]
     }; } }
 };
@@ -658,6 +724,7 @@ function zonesPlain(text){
   });
 }
 function agendaText(e){
+  if(isCall(e)) return callText(e);
   const L = [], secs = sectionsOf(e), rs = roleSlots(e);
   L.push("*" + e.title + "*" + (e.sub ? " · " + e.sub : ""));
   L.push("");
@@ -826,7 +893,8 @@ function minsOf(items){ return items.reduce(function(n, it){ return n + itemMin(
    right. On a phone it is one column, flyer first. */
 function rolesOf(e){
   const rs = roleSlots(e);
-  return STD_ROLES.filter(function(r){ return isFNH(e) || rs.std[r[0]]; }).map(function(r){ return [r[1], rs.std[r[0]] || ""]; }).concat(rs.extra);
+  return STD_ROLES.filter(function(r){ return isFNH(e) || rs.std[r[0]] || (isCall(e) && (r[0] === "host" || r[0] === "ceo")); })
+    .map(function(r){ return [r[1], rs.std[r[0]] || ""]; }).concat(rs.extra);
 }
 function hostsHTML(e){
   const rs = roleSlots(e), names = [rs.std.host, rs.std.cohost].filter(Boolean);
@@ -864,13 +932,13 @@ function viewHTML(e){
     +   (admin() ? '<button type="button" class="big sec" data-act="edit">Edit event</button>' : '')
     + '</div></div>'
     + aboutHTML(e)
-    + (e.flow && e.flow.length ? '<div class="sech">Overview</div>' + overviewHTML(e.flow) : '')
+    + (e.flow && e.flow.length && !isCall(e) ? '<div class="sech">Overview</div>' + overviewHTML(e.flow) : '')
     + itinHTML(e)
     + (roles.length ? '<div class="sech">Roles</div><div class="crew">' + roles.map(function(r){
         const m = /^(.*?)\s*\((.+)\)\s*$/.exec(r[0]);          /* "Online CEO (Chief Energy Officer)" */
         return '<div><span>' + esc(m ? m[1] : r[0]) + '</span>' + (r[1] ? '<b>' + esc(r[1]) + '</b>' : '<b class="tbc">To be confirmed</b>')
           + (m ? '<i>' + esc(m[2]) + '</i>' : '') + '</div>';
-      }).join("") + '</div><p class="glink"><a href="guide.html">Hosting & participant guide</a></p>' : '')
+      }).join("") + '</div>' + (isCall(e) ? '' : '<p class="glink"><a href="guide.html">Hosting & participant guide</a></p>') : '')
     + (secs.length || !itinDays(e).length ? '<div class="sech">' + esc(e.agendaTitle || "Agenda") + (total ? '<span>' + fmtMin(total) + ' min planned</span>' : '') + '</div>'
         + agendaHTML(e, secs) : '')
     + faqHTML(e);
@@ -993,6 +1061,7 @@ function faqHTML(e){
     return '<details><summary>' + esc(r[0]) + '</summary><p>' + esc(r[1]) + '</p></details>'; }).join("") + '</div>';
 }
 function agendaHTML(e, secs){
+  if(isCall(e)) return callHTML(e);
   if(!secs.length) return '<p class="empty" style="padding:16px 0">The agenda is coming.</p>';
   return '<ol class="ag">' + secs.map(function(x){
     const m = minsOf(x.items);
