@@ -159,6 +159,7 @@ h1{font-size:32px;font-weight:700;letter-spacing:-.02em;margin:0;line-height:1.1
 .glang{display:inline-flex;background:var(--chip);border-radius:8px;padding:2px}
 .glang button{border:0;background:none;font:inherit;font-size:12.5px;padding:3px 10px;border-radius:6px;cursor:pointer;color:var(--muted)}
 .glang button.on{background:var(--card);color:var(--ink);font-weight:600}
+.gtopsw{float:right;margin:0 0 6px 10px}
 .gbar{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:14.5px;margin:0 0 8px}
 .gbar .gleft{color:var(--accent)}
 .ghow{font-size:13.5px;color:var(--ink-2);margin:0 0 12px}
@@ -375,7 +376,7 @@ h1,.sub,.sech,.run .rh{text-shadow:0 1px 12px rgba(0,0,0,.3)}
 /* The pre-commit hook in the pm-final clone rewrites this time on every commit that touches this
    file. The version check at the bottom reads it, and the script text, to tell an old copy of
    this page from the newest one (DiamondA70/_skills/app-qa/references/self-update.md). */
-const BUILD = "2026-11-23T18:37:16Z";
+const BUILD = "2026-11-23T19:00:32Z";
 const SELF = document.currentScript ? document.currentScript.textContent : "";
 
 /* The agendas: data/team-events.json next to this page, read fresh through the API (GitHub Pages
@@ -487,6 +488,28 @@ let GALA = { id: "", data: null, err: "", loading: false, sort: "", form: null, 
 function gLang(){ try { const v = localStorage.getItem("gala-lang"); if(v === "en" || v === "zh") return v; } catch(err){} return /^zh/i.test(navigator.language || "") ? "zh" : "en"; }
 function gi(){ return gLang() === "zh" ? 1 : 0; }
 function gt(k, n){ const a = GT[k]; const s = a ? a[gi()] : k; return n == null ? s : s.replace("{n}", n); }
+/* One language on the page at a time (Johnny, 2026-11-23). A show keeps title/desc (English) and
+   titleZh/descZh (中文); the page shows the picked one and falls back to the other. Event fields
+   typed in both languages are written "English || 中文" (About: a line with only || between them). */
+function gTitle(s){ return (gi() ? (s.titleZh || s.title) : (s.title || s.titleZh)) || ""; }
+function gDesc(s){ return (gi() ? (s.descZh || s.desc) : (s.desc || s.descZh)) || ""; }
+function galaPick(v, multi){
+  const t = String(v || ""); const parts = multi ? t.split(/\n\s*\|\|\s*\n/) : t.split(/\s*\|\|\s*/);
+  return (parts.length > 1 ? parts[gi()] || parts[0] : t).trim();
+}
+function galaLocalEvent(e){
+  return Object.assign({}, e, { _loc: true, sub: galaPick(e.sub), time: galaPick(e.time), where: galaPick(e.where), whereNote: galaPick(e.whereNote), about: galaPick(e.about, true) });
+}
+const GLABEL = [[">Hosted by<", ">主办<"], [">Calendar<", ">日历<"], [">Trips<", ">旅行<"], [">Share this event<", ">分享活动<"],
+  [">Copy agenda for WhatsApp<", ">复制拉票文字<"], [">About<", ">活动介绍<"], [">Next up<", ">即将开始<"], [">Coming up<", ">即将开始<"],
+  [">Tonight<", ">今晚<"], [">Past event<", ">已结束<"], [">Most recent<", ">最近一场<"], [">Gala<", ">晚会<"], [">Good to know<", ">须知<"], [">Edit event<", ">编辑活动<"], [">See the flyer<", ">查看海报<"]];
+function galaLocalize(html, e){
+  if(!gi()) return html;
+  GLABEL.forEach(function(p){ html = html.split(p[0]).join(p[1]); });
+  const d = asDate(e.date);
+  html = html.split(esc(whenLong(e))).join(esc(d.toLocaleDateString("zh-CN", { year: "numeric", month: "long", day: "numeric", weekday: "long" })));
+  return html.replace(/<div class="dtile"><i>[A-Z]{3}<\/i>/, '<div class="dtile"><i>' + (d.getMonth() + 1) + '月</i>');
+}
 function gName(){ try { return localStorage.getItem("gala-name") || ""; } catch(err){ return ""; } }
 function gKey(n){ return String(n || "").toLowerCase().replace(/\s+/g, " ").trim(); }
 function gMe(){ const d = GALA.data, k = gKey(gName()); return (d && k && d.people[k]) || { red: [], white: [], join: [] }; }
@@ -579,8 +602,8 @@ function galaCardHTML(s, c, me, d){
   const needTxt = need ? (joined >= need ? gt("full") : gt("needMore", need - joined)) : "";
   const lock = !d.open || cut;
   let h = '<article class="gcard' + (cut ? ' gcut' : '') + '">';
-  h += '<div class="gtop"><h3>' + esc(s.title) + '</h3>' + badge + '</div><div class="gchips">' + chips + '</div>';
-  if(s.desc) h += '<p class="gdesc">' + esc(s.desc).replace(/\n/g, "<br>") + '</p>';
+  h += '<div class="gtop"><h3>' + esc(gTitle(s)) + '</h3>' + badge + '</div><div class="gchips">' + chips + '</div>';
+  if(gDesc(s)) h += '<p class="gdesc">' + esc(gDesc(s)).replace(/\n/g, "<br>") + '</p>';
   if(s.link && /^https?:\/\//.test(s.link)) h += '<p class="gref"><a href="' + esc(s.link) + '" target="_blank" rel="noopener">' + esc(gt("ref")) + '</a></p>';
   if(s.lead) h += '<p class="gby">' + esc(gt("aLead")) + ': <b>' + esc(s.lead) + '</b></p>';
   h += '<div class="gbtns">'
@@ -604,7 +627,7 @@ function galaCardHTML(s, c, me, d){
       + '<label>' + esc(gt("aStatus")) + '<select name="gst">' + ["open", "selected", "maybe", "cut"].map(function(v){ return '<option value="' + v + '"' + ((s.status || "open") === v ? ' selected' : '') + '>' + esc(gt(v === "open" ? "aOpen" : v)) + '</option>'; }).join("") + '</select></label>'
       + '<label>' + esc(gt("aOrder")) + '<input name="gord" type="number" min="0" max="99" value="' + (s.order || "") + '"></label>'
       + '<label>' + esc(gt("aLead")) + '<input name="glead" maxlength="80" value="' + esc(s.lead || "") + '"></label>'
-      + '<label>' + esc(gt("aMerge")) + '<select name="gmerge"><option value="">' + esc(gt("aNone")) + '</option>' + others.map(function(x){ return '<option value="' + esc(x.id) + '">' + esc(x.title) + '</option>'; }).join("") + '</select></label>'
+      + '<label>' + esc(gt("aMerge")) + '<select name="gmerge"><option value="">' + esc(gt("aNone")) + '</option>' + others.map(function(x){ return '<option value="' + esc(x.id) + '">' + esc(gTitle(x)) + '</option>'; }).join("") + '</select></label>'
       + '<button type="button" class="btn" data-act="gala-admin" data-sid="' + esc(s.id) + '">' + esc(gt("save")) + '</button></div>';
   }
   return h + '</article>';
@@ -614,13 +637,13 @@ function galaFormHTML(s){
   const opt = function(val, label, cur){ return '<option value="' + val + '"' + (val === cur ? ' selected' : '') + '>' + esc(label) + '</option>'; };
   return '<form class="gform" id="gform" onsubmit="return false">'
     + '<h3>' + esc(gt(s ? "editing" : "newShow")) + '</h3>'
-    + '<label>' + esc(gt("fTitle")) + '<input name="title" maxlength="120" value="' + esc(v.title || "") + '"></label>'
+    + '<label>' + esc(gt("fTitle")) + '<input name="title" maxlength="120" value="' + esc((L ? v.titleZh : v.title) || "") + '" placeholder="' + esc((L ? v.title : v.titleZh) || "") + '"></label>'
     + '<div class="g2"><label>' + esc(gt("fKind")) + '<select name="kind">' + Object.keys(GKIND).map(function(k){ return opt(k, GKIND[k][L], v.kind); }).join("") + '</select></label>'
     + '<label>' + esc(gt("fMode")) + '<select name="mode">' + opt("live", gt("live"), v.mode) + opt("recorded", gt("recorded"), v.mode) + '</select></label></div>'
     + '<div class="g2"><label>' + esc(gt("fMin")) + '<input name="minutes" type="number" min="1" max="60" inputmode="numeric" value="' + (v.minutes || "") + '"></label>'
     + '<label>' + esc(gt("fNeed")) + '<input name="need" type="number" min="1" max="60" inputmode="numeric" value="' + (v.need || "") + '"></label></div>'
     + '<label>' + esc(gt("fLink")) + '<input name="link" type="url" maxlength="400" placeholder="https://" value="' + esc(v.link || "") + '"></label>'
-    + '<label>' + esc(gt("fDesc")) + '<textarea name="desc" rows="3" maxlength="1200">' + esc(v.desc || "") + '</textarea></label>'
+    + '<label>' + esc(gt("fDesc")) + '<textarea name="desc" rows="3" maxlength="1200" placeholder="' + esc((L ? v.desc : v.descZh) || "") + '">' + esc((L ? v.descZh : v.desc) || "") + '</textarea></label>'
     + '<div class="gfbtns"><button type="button" class="big" data-act="gala-save"' + (s ? ' data-sid="' + esc(s.id) + '"' : '') + '>' + esc(gt(s ? "save" : "post")) + '</button>'
     + '<button type="button" class="btn" data-act="gala-cancel">' + esc(gt("cancel")) + '</button></div></form>';
 }
@@ -647,7 +670,7 @@ function galaNameSave(){
 }
 function galaAct(act, b){
   const d = GALA.data, sid = b.dataset.sid;
-  if(act === "gala-lang"){ try { localStorage.setItem("gala-lang", b.dataset.v); } catch(err){} galaPaint(true); return; }
+  if(act === "gala-lang"){ try { localStorage.setItem("gala-lang", b.dataset.v); } catch(err){} const y = scrollY; render(); scrollTo(0, y); return; }
   if(act === "gala-retry"){ GALA.err = ""; GALA.loading = true; galaPaint(true); galaLoad(false); return; }
   if(act === "gala-sort"){ GALA.sort = b.dataset.v; galaPaint(true); return; }
   if(act === "gala-name-save"){ galaNameSave(); return; }
@@ -677,8 +700,10 @@ function galaAct(act, b){
   if(act === "gala-cancel"){ GALA.form = null; galaPaint(true); return; }
   if(act === "gala-save"){
     const f = $("gform"); if(!f) return;
-    const show = { title: f.title.value, kind: f.kind.value, mode: f.mode.value, minutes: f.minutes.value, need: f.need.value, link: f.link.value.trim(), desc: f.desc.value };
-    if(!show.title.trim()){ toast(gt("needTitle")); f.title.focus(); return; }
+    const show = { kind: f.kind.value, mode: f.mode.value, minutes: f.minutes.value, need: f.need.value, link: f.link.value.trim() };
+    show[gi() ? "titleZh" : "title"] = f.title.value; show[gi() ? "descZh" : "desc"] = f.desc.value;
+    const cur = sid ? (d.shows || []).filter(function(x){ return x.id === sid; })[0] : null;
+    if(!f.title.value.trim() && !(cur && (gi() ? cur.title : cur.titleZh))){ toast(gt("needTitle")); f.title.focus(); return; }
     const nm = gName() || "Johnny";
     b.disabled = true;
     galaPost(sid ? { op: "edit", name: nm, sid: sid, show: show } : { op: "propose", name: nm, show: show }, function(){
@@ -698,13 +723,14 @@ function galaAct(act, b){
 document.addEventListener("keydown", function(ev){ if(ev.key === "Enter" && ev.target && ev.target.id === "gname"){ ev.preventDefault(); galaNameSave(); } });
 function galaText(e){
   const d = GALA.data, L = gi(), url = location.origin + location.pathname + "#" + e.id;
-  const out = ["*【" + e.title + "】*"]; if(e.sub) out.push(e.sub); out.push("");
+  const sub = galaPick(e.sub);
+  const out = ["*【" + e.title + "】*"]; if(sub) out.push(sub); out.push("");
   if(d){
     out.push(d.open ? "⏰ " + gt("closes") + ": " + gWhen(d.deadline) : "⏰ " + gt("closedMsg"));
     out.push(gt("how"));
     const t = gTally(d), list = gSorted(d, t, "want").filter(function(s){ return s.status !== "cut"; });
     if(list.length){ out.push("", "*" + gt("soFar") + "*");
-      list.forEach(function(s){ const c = t[s.id]; out.push("• " + s.title + "  ❤️" + c.red.length + " 🤍" + c.white.length + " 🙋" + c.join.length + (s.need ? "/" + s.need : "")); }); }
+      list.forEach(function(s){ const c = t[s.id]; out.push("• " + gTitle(s) + "  ❤️" + c.red.length + " 🤍" + c.white.length + " 🙋" + c.join.length + (s.need ? "/" + s.need : "")); }); }
   }
   out.push("", "👉 " + gt("voteHere") + ": " + url);
   return out.join("\n");
@@ -882,8 +908,9 @@ function current(){
 function statusOf(e){
   const t = todayET(), d = defaultEvent();
   if(e.date === t) return ["Tonight", ""];
-  if(e.date > t) return [e === d ? "Next up" : "Coming up", ""];
-  return [e === d ? "Most recent" : "Past event", "past"];
+  const same = !!d && d.id === e.id;
+  if(e.date > t) return [same ? "Next up" : "Coming up", ""];
+  return [same ? "Most recent" : "Past event", "past"];
 }
 
 /* ---------------- loading ---------------- */
@@ -980,6 +1007,7 @@ function placeLine(e){
   return '';
 }
 function cardHTML(e){
+  if(isGala(e) && !e._loc) e = galaLocalEvent(e);   /* "English || 中文" fields show one language in lists too */
   const st = statusOf(e), rs = roleSlots(e), host = rs.std.host;
   return '<a class="ev' + (st[1] ? " past" : "") + '" href="#' + esc(e.id) + '"><div class="meta">'
     + '<div class="tm">' + (st[1] ? '' : '<b>' + esc(st[0]) + '</b> · ') + esc(e.time || "") + '</div>'
@@ -1042,7 +1070,7 @@ function tfmt(min, withMin){
   const h = Math.floor(min / 60), m = min % 60;
   return { t: (h % 12 || 12) + (withMin || m ? ":" + String(m).padStart(2, "0") : ""), ap: h < 12 ? "AM" : "PM" };
 }
-function etOnly(s){ return !/\b(CT|PT|MT|CST|PST|CDT|PDT|BJT|GMT|UTC)\b|beijing|北京/i.test(s); }
+function etOnly(s){ return !/\b(CT|PT|MT|CST|PST|MST|CDT|PDT|MDT|BJT|GMT|UTC)\b|beijing|北京|arizona|亚利桑那/i.test(s); }
 /* "7:30 to 9:00 PM" or "9 PM", moved by `hours`, in the same style; "" if there is no time. */
 function shiftTime(s, hours, startOnly){
   const m = TIME_RE.exec(s); if(!m) return "";
@@ -1226,7 +1254,8 @@ function flyerFor(text){
   return FLYERS.find(function(f){ return (f.match || []).some(function(w){ return w && s.indexOf(String(w).toLowerCase()) > -1; }); }) || null;
 }
 function flyerOf(e){
-  return FLYERS.find(function(f){ return f.event === e.id; }) || flyerFor(e.title);
+  /* a gala shares its trip's name ("Year End Trip 年会") but not the trip's sign-up flyer */
+  return FLYERS.find(function(f){ return f.event === e.id; }) || (isGala(e) ? null : flyerFor(e.title));
 }
 function showFlyer(id){
   const f = FLYERS.find(function(x){ return x.id === id; });
@@ -1304,6 +1333,11 @@ function zoomBits(e){
   return { zoom: zoom, zid: zid, join: "https://zoom.us/j/" + zid };
 }
 function viewHTML(e){
+  if(isGala(e) && !e._loc){
+    /* the gala page in one language, with the switch at the top too */
+    const L = gi(), sw = '<div class="glang gtopsw"><button type="button" data-act="gala-lang" data-v="en" class="' + (L ? '' : 'on') + '">EN</button><button type="button" data-act="gala-lang" data-v="zh" class="' + (L ? 'on' : '') + '">中文</button></div>';
+    return galaLocalize(viewHTML(galaLocalEvent(e)), e).replace('<div class="chips" style="margin-top:0">', sw + '<div class="chips" style="margin-top:0">');
+  }
   const z = zoomBits(e), secs = sectionsOf(e), fl = flyerOf(e), cal = calOf(e), roles = rolesOf(e);
   const gaps = isCall(e) ? handoffs(callRows(e)) : 0;
   const total = secs.reduce(function(n, x){ return n + minsOf(x.items); }, 0) + gaps * HANDOFF, st = statusOf(e);
@@ -1526,7 +1560,8 @@ function copyLink(){
   const ok = function(){ toast("Link copied"); }, no = function(){ showCopyBox(t); };
   if(navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(ok, no); else no();
 }
-function footHTML(){ return '<div class="foot">Questions about an event? Ask your coach and mentor.' + (admin() ? '<p class="who">' + whoHTML() + '</p>' : '') + '<p class="ver"></p></div>'; }
+function footHTML(){ const c = LOADED && route().v === "event" ? current() : null, zh = c && isGala(c) && gi();
+  return '<div class="foot">' + (zh ? '对活动有问题？问问你的教练和导师。' : 'Questions about an event? Ask your coach and mentor.') + (admin() ? '<p class="who">' + whoHTML() + '</p>' : '') + '<p class="ver"></p></div>'; }
 
 function render(){
   renderNav();
