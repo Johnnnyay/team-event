@@ -191,6 +191,14 @@ h1{font-size:32px;font-weight:700;letter-spacing:-.02em;margin:0;line-height:1.1
 .gwhob{margin-top:8px;font-size:13px}
 .gwho{font-size:13.5px;color:var(--ink-2);margin:4px 0 0}
 .gby{margin:8px 0 0;font-size:13px;color:var(--muted)}
+.gtalkb{margin-top:10px;font-size:13.5px;display:block}
+.gtalk{margin:8px 0 0;padding:10px 0 0;border-top:1px solid var(--line)}
+.gc{padding:6px 0;border-bottom:1px solid var(--line)}
+.gch{display:flex;gap:8px;align-items:baseline;font-size:13px} .gch span{color:var(--muted)} .gch .linkbtn{margin-left:auto;font-size:12.5px}
+.gc p{margin:2px 0 0;font-size:14.5px;color:var(--ink-2)}
+.gcnone{font-size:13.5px;color:var(--muted);margin:0 0 6px}
+.gcnew{display:flex;gap:8px;align-items:flex-end;margin-top:8px}
+.gcnew textarea{flex:1;min-width:0;background:var(--card-2);border:1px solid var(--line-2);border-radius:9px;color:var(--ink);font:inherit;font-size:16px;padding:8px 10px;resize:vertical}
 .gadm{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end;margin:12px 0 0;padding:10px 0 0;border-top:1px dashed var(--line-2);font-size:12.5px;color:var(--muted)}
 .gadm label{display:flex;flex-direction:column;gap:3px}
 .gadm input,.gadm select{background:var(--card);border:1px solid var(--line-2);border-radius:8px;color:var(--ink);font:inherit;font-size:14px;padding:5px 7px;max-width:180px}
@@ -376,7 +384,7 @@ h1,.sub,.sech,.run .rh{text-shadow:0 1px 12px rgba(0,0,0,.3)}
 /* The pre-commit hook in the pm-final clone rewrites this time on every commit that touches this
    file. The version check at the bottom reads it, and the script text, to tell an old copy of
    this page from the newest one (DiamondA70/_skills/app-qa/references/self-update.md). */
-const BUILD = "2026-11-23T19:36:07Z";
+const BUILD = "2026-11-23T19:56:00Z";
 const SELF = document.currentScript ? document.currentScript.textContent : "";
 
 /* The agendas: data/team-events.json next to this page, read fresh through the API (GitHub Pages
@@ -482,10 +490,14 @@ const GT = {
   min: ["min", "分钟"], people: ["people", "人"], posted: ["Posted! Share the link so people vote.", "发布成功，快把链接发给大家投票！"],
   needTitle: ["Give the show a name.", "给节目起个名字。"],
   aStatus: ["Status", "状态"], aOpen: ["Open", "待定"], aOrder: ["Order", "顺序"], aLead: ["Lead", "负责人"], aMerge: ["Merge into", "合并到"], aNone: ["(don't merge)", "（不合并）"],
-  voteHere: ["Propose a show and vote here", "在这里提节目、投票"], soFar: ["Shows so far", "目前的节目"]
+  voteHere: ["Propose a show and vote here", "在这里提节目、投票"],
+  comments: ["Comments", "留言"], cOpen: ["💬 {n} comments · ideas welcome", "💬 {n} 条留言 · 欢迎出点子"], cOpen0: ["💬 Comment · ideas welcome", "💬 留言 · 欢迎出点子"], cHide: ["Hide comments", "收起留言"],
+  cPh: ["A better song, a joke, a twist…", "更合适的歌、一个梗、一个新点子……"], cPost: ["Post", "发送"], cNone: ["No comments yet. Start the brainstorm!", "还没有留言，来开个头吧！"],
+  cEmpty: ["Write something first.", "先写点什么。"], cDel: ["delete", "删除"], cTapDel: ["Tap again", "再点一下"],
+  justNow: ["just now", "刚刚"], mAgo: ["{n} min ago", "{n} 分钟前"], hAgo: ["{n} h ago", "{n} 小时前"], dAgo: ["{n} d ago", "{n} 天前"], soFar: ["Shows so far", "目前的节目"]
 };
 const GKIND = { song: ["Song", "歌曲"], dance: ["Dance", "舞蹈"], skit: ["Skit", "小品"], lipsync: ["Lip sync", "对口型"], video: ["Video", "视频"], game: ["Game", "游戏"], other: ["Other", "其他"] };
-let GALA = { id: "", data: null, err: "", loading: false, sort: "", form: null, who: {}, timer: 0 };
+let GALA = { id: "", data: null, err: "", loading: false, sort: "", form: null, who: {}, talk: {}, timer: 0 };
 function gLang(){ try { const v = localStorage.getItem("gala-lang"); if(v === "en" || v === "zh") return v; } catch(err){} return /^zh/i.test(navigator.language || "") ? "zh" : "en"; }
 function gi(){ return gLang() === "zh" ? 1 : 0; }
 function gt(k, n){ const a = GT[k]; const s = a ? a[gi()] : k; return n == null ? s : s.replace("{n}", n); }
@@ -539,7 +551,7 @@ function galaPaint(force){
 }
 function galaStart(e){
   if(GALA.id === e.id) return;
-  GALA = { id: e.id, data: null, err: "", loading: true, sort: "", form: null, who: {}, timer: GALA.timer };
+  GALA = { id: e.id, data: null, err: "", loading: true, sort: "", form: null, who: {}, talk: {}, timer: GALA.timer };
   setTimeout(function(){ galaLoad(false); }, 0);
   if(!GALA.timer) GALA.timer = setInterval(function(){
     const c = current(); if(document.hidden || !c || !isGala(c) || GALA.form) return; galaLoad(true);
@@ -620,6 +632,7 @@ function galaCardHTML(s, c, me, d){
     if(openW) h += '<div class="gwho">' + [["❤️ " + gt("redName") + ":", c.red], ["🤍 " + gt("whiteName") + ":", c.white], ["🙋 " + gt("inBtn") + ":", c.join]].filter(function(x){ return x[1].length; })
       .map(function(x){ return '<div>' + x[0] + ' ' + esc(x[1].join(", ")) + '</div>'; }).join("") + '</div>';
   }
+  h += galaTalkHTML(s, d);
   h += '<p class="gby">' + esc(gt("by")) + ' ' + esc(s.by || "") + (mine || admin()
     ? ' · <button type="button" class="linkbtn" data-act="gala-edit" data-sid="' + esc(s.id) + '">' + esc(gt("edit")) + '</button> · <button type="button" class="linkbtn" data-act="gala-del" data-sid="' + esc(s.id) + '">' + esc(gt("del")) + '</button>' : '') + '</p>';
   if(admin()){
@@ -632,6 +645,26 @@ function galaCardHTML(s, c, me, d){
       + '<button type="button" class="btn" data-act="gala-admin" data-sid="' + esc(s.id) + '">' + esc(gt("save")) + '</button></div>';
   }
   return h + '</article>';
+}
+/* Comments under a show, newest at the bottom like a thread (Johnny, 2026-11-23: "像 twitter 一样，
+   别人可以留言，给 idea"). Open to anyone with a name, after the deadline too. */
+function gAgo(iso){
+  const m = Math.max(0, Math.round((Date.now() - Date.parse(iso)) / 60000));
+  if(m < 1) return gt("justNow"); if(m < 60) return gt("mAgo", m); if(m < 1440) return gt("hAgo", Math.round(m / 60)); return gt("dAgo", Math.round(m / 1440));
+}
+function galaTalkHTML(s, d){
+  const L = (d.comments || {})[s.id] || [], open = !!GALA.talk[s.id], k = gKey(gName());
+  let h = '<button type="button" class="linkbtn gtalkb" data-act="gala-talk" data-sid="' + esc(s.id) + '">' + esc(open ? gt("cHide") : (L.length ? gt("cOpen", L.length) : gt("cOpen0"))) + '</button>';
+  if(!open) return h;
+  h += '<div class="gtalk">' + (L.length ? L.map(function(c){
+      const mine = (k && c.key === k) || admin();
+      return '<div class="gc"><div class="gch"><b>' + esc(c.name) + '</b><span>' + esc(gAgo(c.at)) + '</span>'
+        + (mine ? '<button type="button" class="linkbtn" data-act="gala-uncomment" data-sid="' + esc(s.id) + '" data-cid="' + esc(c.id) + '">' + esc(gt("cDel")) + '</button>' : '') + '</div>'
+        + '<p>' + esc(c.text).replace(/\n/g, "<br>") + '</p></div>';
+    }).join("") : '<p class="gcnone">' + esc(gt("cNone")) + '</p>')
+    + '<div class="gcnew"><textarea id="gc-' + esc(s.id) + '" rows="2" maxlength="500" placeholder="' + esc(gt("cPh")) + '"></textarea>'
+    + '<button type="button" class="btn" data-act="gala-comment" data-sid="' + esc(s.id) + '">' + esc(gt("cPost")) + '</button></div></div>';
+  return h;
 }
 function galaFormHTML(s){
   const v = s || { kind: "skit", mode: "live" }, L = gi();
@@ -653,7 +686,7 @@ function galaPost(op, done){
   return fetch(GALA_API + "&event=" + encodeURIComponent(GALA.id), { method: "POST", headers: hdr, body: JSON.stringify(op) })
     .then(function(r){ return r.json().then(function(j){ return { ok: r.ok, status: r.status, j: j }; }); })
     .then(function(x){
-      if(x.j && x.j.shows) GALA.data = { deadline: x.j.deadline, open: x.j.open, redMax: x.j.redMax, shows: x.j.shows, people: x.j.people };
+      if(x.j && x.j.shows) GALA.data = { deadline: x.j.deadline, open: x.j.open, redMax: x.j.redMax, shows: x.j.shows, people: x.j.people, comments: x.j.comments || {} };
       if(!x.ok){
         if(x.status === 401 && window.AdminSession){ AdminSession.logout(); renderNav(); AdminSession.login(function(){ renderNav(); galaPost(op, done); }); }
         toast(x.j && x.j.error ? x.j.error : gt("saveFail"));
@@ -677,6 +710,7 @@ function galaAct(act, b){
   if(act === "gala-name-save"){ galaNameSave(); return; }
   if(act === "gala-name-change"){ try { localStorage.removeItem("gala-name"); } catch(err){} galaPaint(true); gNameFocus(); return; }
   if(act === "gala-who"){ GALA.who[sid] = !GALA.who[sid]; galaPaint(true); return; }
+  if(act === "gala-talk"){ GALA.talk[sid] = !GALA.talk[sid]; galaPaint(true); return; }
   if(!d) return;
   if(act === "gala-vote"){
     const nm = gName(); if(!nm){ toast(gt("nameFirst")); gNameFocus(); return; }
@@ -712,6 +746,15 @@ function galaAct(act, b){
       .then(function(){ b.disabled = false; });
     return;
   }
+  if(act === "gala-comment"){
+    const nm = gName(); if(!nm){ toast(gt("nameFirst")); gNameFocus(); return; }
+    const ta = $("gc-" + sid), text = ta ? ta.value.trim() : "";
+    if(!text){ toast(gt("cEmpty")); if(ta) ta.focus(); return; }
+    b.disabled = true; if(ta) ta.blur();
+    galaPost({ op: "comment", name: nm, sid: sid, text: text }, function(){ GALA.talk[sid] = true; }).then(function(){ b.disabled = false; });
+    return;
+  }
+  if(act === "gala-uncomment"){ arm(b, gt("cTapDel"), function(){ galaPost({ op: "uncomment", name: gName() || "admin", sid: sid, cid: b.dataset.cid }); }); return; }
   if(act === "gala-del"){ arm(b, gt("tapDel"), function(){ galaPost({ op: "delete", name: gName() || "admin", sid: sid }); }); return; }
   if(act === "gala-admin"){
     const box = b.closest(".gadm"); if(!box) return;
