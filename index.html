@@ -154,6 +154,53 @@ h1{font-size:32px;font-weight:700;letter-spacing:-.02em;margin:0;line-height:1.1
 .run .rh{margin:3px 0 0;font-size:15.5px;font-weight:600}
 .run ul{margin:6px 0 0;padding-left:20px} .run ul li{padding:2px 0;border:0;font-size:14.5px}
 .run ul li.gap{list-style:none;height:10px;padding:0}
+/* the gala show board */
+#gala .sech{align-items:center}
+.glang{display:inline-flex;background:var(--chip);border-radius:8px;padding:2px}
+.glang button{border:0;background:none;font:inherit;font-size:12.5px;padding:3px 10px;border-radius:6px;cursor:pointer;color:var(--muted)}
+.glang button.on{background:var(--card);color:var(--ink);font-weight:600}
+.gbar{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:14.5px;margin:0 0 8px}
+.gbar .gleft{color:var(--accent)}
+.ghow{font-size:13.5px;color:var(--ink-2);margin:0 0 12px}
+.gme{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:space-between;font-size:14.5px;margin:0 0 14px}
+.gme label{font-weight:600;width:100%}
+.gme .grow{display:flex;gap:8px;width:100%}
+.gme input{flex:1;min-width:0;background:var(--card);border:1px solid var(--line-2);border-radius:9px;color:var(--ink);font:inherit;font-size:16px;padding:8px 10px}
+.gme .gleft2{color:var(--ink-2);font-size:13.5px}
+.gsort{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px;align-items:center}
+.gsort button{border:1px solid var(--line-2);background:var(--card);color:var(--ink-2);font:inherit;font-size:13.5px;padding:6px 12px;border-radius:999px;cursor:pointer}
+.gsort button.on{background:var(--btn);color:var(--btn-ink);border-color:var(--btn);font-weight:600;text-shadow:none}
+.gsort .gnew{margin-left:auto;background:var(--accent);color:var(--on-accent);border-color:var(--accent);font-weight:600;text-shadow:none}
+.gcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 12px;-webkit-backdrop-filter:blur(18px) saturate(1.3);backdrop-filter:blur(18px) saturate(1.3)}
+.gcard.gcut{opacity:.55}
+.gtop{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
+.gtop h3{margin:0;font-size:16.5px;line-height:1.35}
+.gst{flex:none;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--chip)}
+.gst.selected{background:var(--accent);color:var(--on-accent);text-shadow:none}
+.gchips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0}
+.gchip{font-size:12px;padding:2px 8px;border-radius:6px;background:var(--chip);color:var(--ink-2)}
+.gdesc{margin:8px 0 0;font-size:14.5px;color:var(--ink-2)}
+.gref{margin:6px 0 0;font-size:14px} .gref a{color:var(--accent)}
+.gbtns{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0 0}
+.gv{border:1px solid var(--line-2);background:rgba(255,255,255,.06);color:var(--ink);font:inherit;font-size:14.5px;padding:7px 12px;border-radius:999px;cursor:pointer;min-height:38px}
+.gv.on{background:rgba(255,255,255,.92);color:#14213A;border-color:#fff;text-shadow:none}
+.gv.red.on{background:#FFE3E6;color:#8A1C2B;border-color:#FFB3BD}
+.gv:disabled{opacity:.5;cursor:default}
+.gneed{font-size:13px;color:var(--amber)} .gneed.ok{color:var(--muted)}
+.gwhob{margin-top:8px;font-size:13px}
+.gwho{font-size:13.5px;color:var(--ink-2);margin:4px 0 0}
+.gby{margin:8px 0 0;font-size:13px;color:var(--muted)}
+.gadm{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end;margin:12px 0 0;padding:10px 0 0;border-top:1px dashed var(--line-2);font-size:12.5px;color:var(--muted)}
+.gadm label{display:flex;flex-direction:column;gap:3px}
+.gadm input,.gadm select{background:var(--card);border:1px solid var(--line-2);border-radius:8px;color:var(--ink);font:inherit;font-size:14px;padding:5px 7px;max-width:180px}
+.gadm input[type=number]{width:64px}
+.gform{background:var(--card);border:1px solid var(--line-2);border-radius:14px;padding:14px 16px;margin:0 0 12px;display:flex;flex-direction:column;gap:10px}
+.gform h3{margin:0;font-size:16px}
+.gform label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--muted)}
+.gform input,.gform select,.gform textarea{background:var(--card-2);border:1px solid var(--line-2);border-radius:9px;color:var(--ink);font:inherit;font-size:16px;padding:8px 10px}
+.gform option,.gadm option{color:#14213A}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gfbtns{display:flex;gap:10px;align-items:center} .gfbtns .big{flex:1;margin:0}
 .run .rs{margin:8px 0 0;font-size:13.5px;color:var(--ink-2)}
 .it .ih{margin:0;font-size:14.5px} .it .iw{color:var(--ink-2)} .it .im{color:var(--muted);font-size:13px} .it .sep{color:var(--muted)}
 .it ul{margin:4px 0 0;padding-left:20px;color:var(--ink-2);font-size:14px} .it ul ul{margin-top:2px}
@@ -328,7 +375,7 @@ h1,.sub,.sech,.run .rh{text-shadow:0 1px 12px rgba(0,0,0,.3)}
 /* The pre-commit hook in the pm-final clone rewrites this time on every commit that touches this
    file. The version check at the bottom reads it, and the script text, to tell an old copy of
    this page from the newest one (DiamondA70/_skills/app-qa/references/self-update.md). */
-const BUILD = "2026-11-22T01:37:58Z";
+const BUILD = "2026-11-23T18:37:16Z";
 const SELF = document.currentScript ? document.currentScript.textContent : "";
 
 /* The agendas: data/team-events.json next to this page, read fresh through the API (GitHub Pages
@@ -390,6 +437,278 @@ function handoffs(rows){
   return n;
 }
 function isBreak(p){ return typeof p === "string" && /^\s*-{2,}\s*$/.test(p); }
+
+/* ---------------- the gala show board ----------------
+   Johnny, 2026-11-23: the year-end trip has a 跨年晚会 where anyone can put on a show. A new kind of
+   event (kind "Gala", e.g. "Year End Trip 年会") where the team proposes shows, votes for what they
+   want to see and signs up for what they want to be in. His rules: anyone with the link takes part
+   (a name, no sign-in); 3 red hearts each (最想看) and unlimited white hearts (比较期待), one heart
+   per show; proposals and hearts close at the deadline (this weekend), signing up stays open for
+   rehearsals; English and 中文 with a switch; the admin picks the lineup. Shows and hearts live behind
+   /api/save-functions?doc=gala (lib/gala.js in health-intake-api), in the private reports repo.
+   Every outcome has a path: no name yet (asks once, the same name on another phone is the same
+   person), a wrong tap (tap again), a 4th red heart (told to take one back), a duplicate show
+   (admin merges, hearts follow), a show nobody joins ("needs N more"), the deadline (hearts lock),
+   a failed save (put back, told why), typing while the board refreshes (the refresh waits). */
+const GALA_API = "https://health-intake-api.vercel.app/api/save-functions?doc=gala";
+function isGala(e){ return /gala|年会|晚会/i.test(e.kind || ""); }
+const GT = {
+  board: ["Show board", "节目板"],
+  how: ["❤️ Most want to see (3 each) · 🤍 Looking forward to (as many as you like) · 🙋 I want to be in it", "❤️ 最想看（每人 3 颗）· 🤍 比较期待（不限）· 🙋 我要上"],
+  closes: ["Proposals and hearts close", "提节目和投票截止"],
+  closedMsg: ["Voting has closed. Johnny is picking the lineup. You can still sign up to perform.", "投票已截止，Johnny 正在定节目单。想上台的还可以报名。"],
+  daysLeft: ["{n} days left", "还剩 {n} 天"], hoursLeft: ["{n} hours left", "还剩 {n} 小时"], soon: ["closing soon", "马上截止"],
+  you: ["You're voting as", "你的名字："], change: ["change", "修改"],
+  who: ["Your name first, so your hearts count", "先写名字，投票才算数"], namePh: ["Your name", "你的名字"], ok: ["OK", "好"],
+  redLeft: ["❤️ {n} of 3 left", "❤️ 还剩 {n} 颗"], whiteU: ["🤍 unlimited", "🤍 不限"],
+  sortWant: ["Most wanted", "最想看"], sortNeed: ["Needs people", "缺人"], sortNew: ["Newest", "最新"], sortLineup: ["Lineup", "节目单"],
+  propose: ["+ Propose a show", "+ 提一个节目"], editing: ["Edit the show", "修改节目"], newShow: ["A new show", "新节目"],
+  fTitle: ["Name of the show", "节目名称"], fKind: ["Type", "类型"], fMode: ["Live or pre-recorded", "现场还是提前录"],
+  live: ["Live", "现场"], recorded: ["Pre-recorded", "提前录"], fMin: ["Minutes", "时长（分钟）"], fNeed: ["People needed", "需要几个人"],
+  fLink: ["Reference link (YouTube, Instagram…)", "参考链接（YouTube、Instagram 等）"], fDesc: ["What happens, in a sentence or two", "一两句话说说内容"],
+  post: ["Post it", "发布"], save: ["Save", "保存"], cancel: ["Cancel", "取消"],
+  by: ["Proposed by", "提议人："], edit: ["Edit", "修改"], del: ["Delete", "删除"], tapDel: ["Tap again to delete", "再点一下删除"],
+  inBtn: ["I'm in", "我要上"], inOn: ["You're in", "已报名"], needMore: ["needs {n} more", "还缺 {n} 人"], full: ["full", "人齐了"],
+  ref: ["▶ Reference", "▶ 参考视频"], seeWho: ["See who", "看看是谁"], hideWho: ["Hide", "收起"],
+  selected: ["In the lineup", "已入选"], maybe: ["Maybe", "备选"], cut: ["Not this year", "这次不做"],
+  nameFirst: ["Type your name first, then tap again.", "先写上你的名字，再点一次。"],
+  redFull: ["You've used all 3 red hearts. Take one back first, or give a white one.", "3 颗红心用完了。先收回一颗，或者给白心。"],
+  closed: ["Voting has closed.", "投票已截止。"], cutNo: ["That show isn't going ahead.", "这个节目这次不做了。"],
+  saveFail: ["Couldn't save. Check your connection and try again.", "没保存上，检查网络后再试一次。"],
+  loading: ["Loading the shows…", "正在加载节目…"], loadFail: ["Couldn't load the shows.", "节目加载失败。"], retry: ["Try again", "重试"],
+  empty: ["No shows yet. Be the first to propose one!", "还没有节目，来提第一个吧！"],
+  min: ["min", "分钟"], people: ["people", "人"], posted: ["Posted! Share the link so people vote.", "发布成功，快把链接发给大家投票！"],
+  needTitle: ["Give the show a name.", "给节目起个名字。"],
+  aStatus: ["Status", "状态"], aOpen: ["Open", "待定"], aOrder: ["Order", "顺序"], aLead: ["Lead", "负责人"], aMerge: ["Merge into", "合并到"], aNone: ["(don't merge)", "（不合并）"],
+  voteHere: ["Propose a show and vote here", "在这里提节目、投票"], soFar: ["Shows so far", "目前的节目"]
+};
+const GKIND = { song: ["Song", "歌曲"], dance: ["Dance", "舞蹈"], skit: ["Skit", "小品"], lipsync: ["Lip sync", "对口型"], video: ["Video", "视频"], game: ["Game", "游戏"], other: ["Other", "其他"] };
+let GALA = { id: "", data: null, err: "", loading: false, sort: "", form: null, who: {}, timer: 0 };
+function gLang(){ try { const v = localStorage.getItem("gala-lang"); if(v === "en" || v === "zh") return v; } catch(err){} return /^zh/i.test(navigator.language || "") ? "zh" : "en"; }
+function gi(){ return gLang() === "zh" ? 1 : 0; }
+function gt(k, n){ const a = GT[k]; const s = a ? a[gi()] : k; return n == null ? s : s.replace("{n}", n); }
+function gName(){ try { return localStorage.getItem("gala-name") || ""; } catch(err){ return ""; } }
+function gKey(n){ return String(n || "").toLowerCase().replace(/\s+/g, " ").trim(); }
+function gMe(){ const d = GALA.data, k = gKey(gName()); return (d && k && d.people[k]) || { red: [], white: [], join: [] }; }
+function gTally(d){
+  const t = {};
+  (d.shows || []).forEach(function(s){ t[s.id] = { red: [], white: [], join: [] }; });
+  Object.keys(d.people || {}).forEach(function(k){ const p = d.people[k];
+    ["red", "white", "join"].forEach(function(x){ (p[x] || []).forEach(function(sid){ if(t[sid]) t[sid][x].push(p.name); }); }); });
+  return t;
+}
+function galaLoad(quiet){
+  const id = GALA.id; if(!id) return;
+  if(!quiet){ GALA.loading = true; GALA.err = ""; }
+  fetch(GALA_API + "&event=" + encodeURIComponent(id) + "&t=" + Date.now(), { cache: "no-store" })
+    .then(function(r){ return r.json().then(function(j){ if(!r.ok) throw new Error(j.error || r.status); return j; }); })
+    .then(function(d){ if(GALA.id !== id) return; GALA.data = d; GALA.err = ""; GALA.loading = false; galaPaint(); })
+    .catch(function(){ if(GALA.id !== id) return; GALA.loading = false; if(!GALA.data) GALA.err = "load"; galaPaint(); });
+}
+/* Repaint just the board. Waits while someone is typing in it, so a refresh never eats a name or a
+   half-written show. */
+function galaPaint(force){
+  const box = $("gala"), e = current(); if(!box || !e || !isGala(e)) return;
+  const ae = document.activeElement;
+  if(!force && ae && box.contains(ae) && /INPUT|TEXTAREA|SELECT/.test(ae.tagName)) return;
+  box.outerHTML = galaHTML(e);
+}
+function galaStart(e){
+  if(GALA.id === e.id) return;
+  GALA = { id: e.id, data: null, err: "", loading: true, sort: "", form: null, who: {}, timer: GALA.timer };
+  setTimeout(function(){ galaLoad(false); }, 0);
+  if(!GALA.timer) GALA.timer = setInterval(function(){
+    const c = current(); if(document.hidden || !c || !isGala(c) || GALA.form) return; galaLoad(true);
+  }, 20000);
+}
+function gWhen(iso){
+  return new Date(iso).toLocaleString(gi() ? "zh-CN" : "en-US", { timeZone: "America/New_York", weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }) + " ET";
+}
+function gLeft(iso){
+  const ms = Date.parse(iso) - Date.now(); if(ms <= 0) return "";
+  const h = Math.floor(ms / 3600000); if(h >= 48) return gt("daysLeft", Math.floor(h / 24)); if(h >= 1) return gt("hoursLeft", h); return gt("soon");
+}
+function gSorted(d, t, mode){
+  const want = function(a, b){ return t[b.id].red.length - t[a.id].red.length || t[b.id].white.length - t[a.id].white.length || (a.n || 0) - (b.n || 0); };
+  const L = (d.shows || []).slice();
+  const cutLast = function(a, b){ return (a.status === "cut") - (b.status === "cut"); };
+  if(mode === "need") return L.sort(function(a, b){
+    const na = Math.max(0, (a.need || 0) - t[a.id].join.length), nb = Math.max(0, (b.need || 0) - t[b.id].join.length);
+    return cutLast(a, b) || nb - na || want(a, b); });
+  if(mode === "new") return L.sort(function(a, b){ return cutLast(a, b) || (a.at < b.at ? 1 : a.at > b.at ? -1 : 0); });
+  if(mode === "lineup"){ const rank = { selected: 0, maybe: 1, open: 2, cut: 3 };
+    return L.sort(function(a, b){ return rank[a.status || "open"] - rank[b.status || "open"] || (a.order || 99) - (b.order || 99) || want(a, b); }); }
+  return L.sort(function(a, b){ return cutLast(a, b) || want(a, b); });
+}
+function galaHTML(e){
+  galaStart(e);
+  const d = GALA.data, L = gi();
+  const lang = '<div class="glang"><button type="button" data-act="gala-lang" data-v="en" class="' + (L ? '' : 'on') + '">EN</button><button type="button" data-act="gala-lang" data-v="zh" class="' + (L ? 'on' : '') + '">中文</button></div>';
+  const head = '<div class="sech">' + esc(gt("board")) + lang + '</div>';
+  if(!d) return '<section id="gala">' + head + (GALA.err
+    ? '<p class="empty">' + esc(gt("loadFail")) + ' <button type="button" class="linkbtn" data-act="gala-retry">' + esc(gt("retry")) + '</button></p>'
+    : '<p class="empty">' + esc(gt("loading")) + '</p>') + '</section>';
+  const t = gTally(d), me = gMe(), nm = gName(), open = d.open;
+  const anyPicked = (d.shows || []).some(function(s){ return s.status === "selected" || s.status === "maybe"; });
+  const mode = GALA.sort || (anyPicked ? "lineup" : "want");
+  let h = '<section id="gala">' + head;
+  h += '<div class="gbar">' + (open
+    ? '<b>' + esc(gt("closes")) + '</b> ' + esc(gWhen(d.deadline)) + ' · <span class="gleft">' + esc(gLeft(d.deadline)) + '</span>'
+    : esc(gt("closedMsg"))) + '</div>';
+  h += '<p class="ghow">' + esc(gt("how")) + '</p>';
+  h += '<div class="gme">' + (nm
+    ? '<span>' + esc(gt("you")) + ' <b>' + esc(nm) + '</b> · <button type="button" class="linkbtn" data-act="gala-name-change">' + esc(gt("change")) + '</button></span>'
+      + (open ? '<span class="gleft2">' + esc(gt("redLeft", Math.max(0, d.redMax - (me.red || []).length))) + ' · ' + esc(gt("whiteU")) + '</span>' : '')
+    : '<label for="gname">' + esc(gt("who")) + '</label><span class="grow"><input id="gname" maxlength="40" autocomplete="name" placeholder="' + esc(gt("namePh")) + '"><button type="button" class="btn" data-act="gala-name-save">' + esc(gt("ok")) + '</button></span>') + '</div>';
+  const sorts = [["want", "sortWant"], ["need", "sortNeed"], ["new", "sortNew"]]; if(anyPicked) sorts.unshift(["lineup", "sortLineup"]);
+  h += '<div class="gsort">' + sorts.map(function(s){ return '<button type="button" data-act="gala-sort" data-v="' + s[0] + '" class="' + (mode === s[0] ? 'on' : '') + '">' + esc(gt(s[1])) + '</button>'; }).join("")
+    + ((open || admin()) && !GALA.form ? '<button type="button" class="gnew" data-act="gala-new">' + esc(gt("propose")) + '</button>' : '') + '</div>';
+  if(GALA.form && !GALA.form.sid) h += galaFormHTML(null);
+  const list = gSorted(d, t, mode);
+  if(!list.length) h += '<p class="empty">' + esc(gt("empty")) + '</p>';
+  list.forEach(function(s){ h += (GALA.form && GALA.form.sid === s.id) ? galaFormHTML(s) : galaCardHTML(s, t[s.id], me, d); });
+  return h + '</section>';
+}
+function galaCardHTML(s, c, me, d){
+  const L = gi(), k = gKey(gName()), mine = s.byKey === k && !!k, cut = s.status === "cut";
+  const on = function(x){ return (me[x] || []).indexOf(s.id) > -1; };
+  const chips = [GKIND[s.kind] ? GKIND[s.kind][L] : "", gt(s.mode === "recorded" ? "recorded" : "live"), s.minutes ? "~" + s.minutes + " " + gt("min") : ""].filter(Boolean)
+    .map(function(x){ return '<span class="gchip">' + esc(x) + '</span>'; }).join("");
+  const badge = s.status && s.status !== "open" ? '<span class="gst ' + esc(s.status) + '">' + esc(gt(s.status)) + (s.status === "selected" && s.order ? ' #' + s.order : '') + '</span>' : '';
+  const need = s.need || 0, joined = c.join.length;
+  const needTxt = need ? (joined >= need ? gt("full") : gt("needMore", need - joined)) : "";
+  const lock = !d.open || cut;
+  let h = '<article class="gcard' + (cut ? ' gcut' : '') + '">';
+  h += '<div class="gtop"><h3>' + esc(s.title) + '</h3>' + badge + '</div><div class="gchips">' + chips + '</div>';
+  if(s.desc) h += '<p class="gdesc">' + esc(s.desc).replace(/\n/g, "<br>") + '</p>';
+  if(s.link && /^https?:\/\//.test(s.link)) h += '<p class="gref"><a href="' + esc(s.link) + '" target="_blank" rel="noopener">' + esc(gt("ref")) + '</a></p>';
+  if(s.lead) h += '<p class="gby">' + esc(gt("aLead")) + ': <b>' + esc(s.lead) + '</b></p>';
+  h += '<div class="gbtns">'
+    + '<button type="button" class="gv red' + (on("red") ? ' on' : '') + '" data-act="gala-vote" data-k="red" data-sid="' + esc(s.id) + '"' + (lock ? ' disabled' : '') + ' aria-pressed="' + on("red") + '">❤️ <b>' + c.red.length + '</b></button>'
+    + '<button type="button" class="gv white' + (on("white") ? ' on' : '') + '" data-act="gala-vote" data-k="white" data-sid="' + esc(s.id) + '"' + (lock ? ' disabled' : '') + ' aria-pressed="' + on("white") + '">🤍 <b>' + c.white.length + '</b></button>'
+    + '<button type="button" class="gv join' + (on("join") ? ' on' : '') + '" data-act="gala-vote" data-k="join" data-sid="' + esc(s.id) + '"' + (cut ? ' disabled' : '') + ' aria-pressed="' + on("join") + '">🙋 ' + esc(gt(on("join") ? "inOn" : "inBtn")) + ' · <b>' + joined + (need ? '/' + need : '') + '</b></button>'
+    + (needTxt ? '<span class="gneed' + (joined >= need ? ' ok' : '') + '">' + esc(needTxt) + '</span>' : '')
+    + '</div>';
+  const any = c.red.length + c.white.length + c.join.length;
+  if(any){
+    const openW = !!GALA.who[s.id];
+    h += '<button type="button" class="linkbtn gwhob" data-act="gala-who" data-sid="' + esc(s.id) + '">' + esc(gt(openW ? "hideWho" : "seeWho")) + '</button>';
+    if(openW) h += '<div class="gwho">' + [["❤️", c.red], ["🤍", c.white], ["🙋", c.join]].filter(function(x){ return x[1].length; })
+      .map(function(x){ return '<div>' + x[0] + ' ' + esc(x[1].join(", ")) + '</div>'; }).join("") + '</div>';
+  }
+  h += '<p class="gby">' + esc(gt("by")) + ' ' + esc(s.by || "") + (mine || admin()
+    ? ' · <button type="button" class="linkbtn" data-act="gala-edit" data-sid="' + esc(s.id) + '">' + esc(gt("edit")) + '</button> · <button type="button" class="linkbtn" data-act="gala-del" data-sid="' + esc(s.id) + '">' + esc(gt("del")) + '</button>' : '') + '</p>';
+  if(admin()){
+    const others = (d.shows || []).filter(function(x){ return x.id !== s.id; });
+    h += '<div class="gadm" data-sid="' + esc(s.id) + '">'
+      + '<label>' + esc(gt("aStatus")) + '<select name="gst">' + ["open", "selected", "maybe", "cut"].map(function(v){ return '<option value="' + v + '"' + ((s.status || "open") === v ? ' selected' : '') + '>' + esc(gt(v === "open" ? "aOpen" : v)) + '</option>'; }).join("") + '</select></label>'
+      + '<label>' + esc(gt("aOrder")) + '<input name="gord" type="number" min="0" max="99" value="' + (s.order || "") + '"></label>'
+      + '<label>' + esc(gt("aLead")) + '<input name="glead" maxlength="80" value="' + esc(s.lead || "") + '"></label>'
+      + '<label>' + esc(gt("aMerge")) + '<select name="gmerge"><option value="">' + esc(gt("aNone")) + '</option>' + others.map(function(x){ return '<option value="' + esc(x.id) + '">' + esc(x.title) + '</option>'; }).join("") + '</select></label>'
+      + '<button type="button" class="btn" data-act="gala-admin" data-sid="' + esc(s.id) + '">' + esc(gt("save")) + '</button></div>';
+  }
+  return h + '</article>';
+}
+function galaFormHTML(s){
+  const v = s || { kind: "skit", mode: "live" }, L = gi();
+  const opt = function(val, label, cur){ return '<option value="' + val + '"' + (val === cur ? ' selected' : '') + '>' + esc(label) + '</option>'; };
+  return '<form class="gform" id="gform" onsubmit="return false">'
+    + '<h3>' + esc(gt(s ? "editing" : "newShow")) + '</h3>'
+    + '<label>' + esc(gt("fTitle")) + '<input name="title" maxlength="120" value="' + esc(v.title || "") + '"></label>'
+    + '<div class="g2"><label>' + esc(gt("fKind")) + '<select name="kind">' + Object.keys(GKIND).map(function(k){ return opt(k, GKIND[k][L], v.kind); }).join("") + '</select></label>'
+    + '<label>' + esc(gt("fMode")) + '<select name="mode">' + opt("live", gt("live"), v.mode) + opt("recorded", gt("recorded"), v.mode) + '</select></label></div>'
+    + '<div class="g2"><label>' + esc(gt("fMin")) + '<input name="minutes" type="number" min="1" max="60" inputmode="numeric" value="' + (v.minutes || "") + '"></label>'
+    + '<label>' + esc(gt("fNeed")) + '<input name="need" type="number" min="1" max="60" inputmode="numeric" value="' + (v.need || "") + '"></label></div>'
+    + '<label>' + esc(gt("fLink")) + '<input name="link" type="url" maxlength="400" placeholder="https://" value="' + esc(v.link || "") + '"></label>'
+    + '<label>' + esc(gt("fDesc")) + '<textarea name="desc" rows="3" maxlength="1200">' + esc(v.desc || "") + '</textarea></label>'
+    + '<div class="gfbtns"><button type="button" class="big" data-act="gala-save"' + (s ? ' data-sid="' + esc(s.id) + '"' : '') + '>' + esc(gt(s ? "save" : "post")) + '</button>'
+    + '<button type="button" class="btn" data-act="gala-cancel">' + esc(gt("cancel")) + '</button></div></form>';
+}
+function galaPost(op, done){
+  const hdr = Object.assign({ "Content-Type": "application/json" }, admin() && window.AdminSession ? AdminSession.headers() : {});
+  return fetch(GALA_API + "&event=" + encodeURIComponent(GALA.id), { method: "POST", headers: hdr, body: JSON.stringify(op) })
+    .then(function(r){ return r.json().then(function(j){ return { ok: r.ok, status: r.status, j: j }; }); })
+    .then(function(x){
+      if(x.j && x.j.shows) GALA.data = { deadline: x.j.deadline, open: x.j.open, redMax: x.j.redMax, shows: x.j.shows, people: x.j.people };
+      if(!x.ok){
+        if(x.status === 401 && window.AdminSession){ AdminSession.logout(); renderNav(); AdminSession.login(function(){ renderNav(); galaPost(op, done); }); }
+        toast(x.j && x.j.error ? x.j.error : gt("saveFail"));
+      } else if(done) done(x.j);
+      galaPaint(true);
+    })
+    .catch(function(){ toast(gt("saveFail")); galaLoad(true); });
+}
+function gNameFocus(){ const i = $("gname"); if(i){ i.scrollIntoView({ block: "center" }); i.focus({ preventScroll: true }); } }
+function galaNameSave(){
+  const i = $("gname"); const v = i ? i.value.replace(/\s+/g, " ").trim() : "";
+  if(!v){ gNameFocus(); return; }
+  try { localStorage.setItem("gala-name", v.slice(0, 40)); } catch(err){}
+  galaPaint(true);
+}
+function galaAct(act, b){
+  const d = GALA.data, sid = b.dataset.sid;
+  if(act === "gala-lang"){ try { localStorage.setItem("gala-lang", b.dataset.v); } catch(err){} galaPaint(true); return; }
+  if(act === "gala-retry"){ GALA.err = ""; GALA.loading = true; galaPaint(true); galaLoad(false); return; }
+  if(act === "gala-sort"){ GALA.sort = b.dataset.v; galaPaint(true); return; }
+  if(act === "gala-name-save"){ galaNameSave(); return; }
+  if(act === "gala-name-change"){ try { localStorage.removeItem("gala-name"); } catch(err){} galaPaint(true); gNameFocus(); return; }
+  if(act === "gala-who"){ GALA.who[sid] = !GALA.who[sid]; galaPaint(true); return; }
+  if(!d) return;
+  if(act === "gala-vote"){
+    const nm = gName(); if(!nm){ toast(gt("nameFirst")); gNameFocus(); return; }
+    const k = b.dataset.k, key = gKey(nm);
+    const me = d.people[key] || (d.people[key] = { name: nm, red: [], white: [], join: [] });
+    const has = (me[k] || []).indexOf(sid) > -1;
+    if(k !== "join" && !d.open){ toast(gt("closed")); return; }
+    if(!has && k === "red" && (me.red || []).length >= d.redMax){ toast(gt("redFull")); return; }
+    /* show it right away; the answer from the server replaces it, or puts it back with the reason */
+    me[k] = has ? me[k].filter(function(x){ return x !== sid; }) : (me[k] || []).concat(sid);
+    if(!has && k === "red") me.white = (me.white || []).filter(function(x){ return x !== sid; });
+    if(!has && k === "white") me.red = (me.red || []).filter(function(x){ return x !== sid; });
+    galaPaint(true);
+    galaPost({ op: "vote", name: nm, sid: sid, kind: k, on: !has });
+    return;
+  }
+  if(act === "gala-new"){
+    if(!gName()){ toast(gt("nameFirst")); gNameFocus(); return; }
+    GALA.form = {}; galaPaint(true); const f = $("gform"); if(f){ f.scrollIntoView({ block: "center" }); f.title.focus({ preventScroll: true }); } return;
+  }
+  if(act === "gala-edit"){ GALA.form = { sid: sid }; galaPaint(true); const f = $("gform"); if(f) f.scrollIntoView({ block: "center" }); return; }
+  if(act === "gala-cancel"){ GALA.form = null; galaPaint(true); return; }
+  if(act === "gala-save"){
+    const f = $("gform"); if(!f) return;
+    const show = { title: f.title.value, kind: f.kind.value, mode: f.mode.value, minutes: f.minutes.value, need: f.need.value, link: f.link.value.trim(), desc: f.desc.value };
+    if(!show.title.trim()){ toast(gt("needTitle")); f.title.focus(); return; }
+    const nm = gName() || "Johnny";
+    b.disabled = true;
+    galaPost(sid ? { op: "edit", name: nm, sid: sid, show: show } : { op: "propose", name: nm, show: show }, function(){
+      GALA.form = null; if(!sid){ GALA.sort = "new"; toast(gt("posted")); } })
+      .then(function(){ b.disabled = false; });
+    return;
+  }
+  if(act === "gala-del"){ arm(b, gt("tapDel"), function(){ galaPost({ op: "delete", name: gName() || "admin", sid: sid }); }); return; }
+  if(act === "gala-admin"){
+    const box = b.closest(".gadm"); if(!box) return;
+    const op = { op: "admin", sid: sid, status: box.querySelector('[name="gst"]').value, order: box.querySelector('[name="gord"]').value || 0, lead: box.querySelector('[name="glead"]').value };
+    const m = box.querySelector('[name="gmerge"]').value; if(m) op.mergeInto = m;
+    galaPost(op, function(){ toast("Saved"); });
+    return;
+  }
+}
+document.addEventListener("keydown", function(ev){ if(ev.key === "Enter" && ev.target && ev.target.id === "gname"){ ev.preventDefault(); galaNameSave(); } });
+function galaText(e){
+  const d = GALA.data, L = gi(), url = location.origin + location.pathname + "#" + e.id;
+  const out = ["*【" + e.title + "】*"]; if(e.sub) out.push(e.sub); out.push("");
+  if(d){
+    out.push(d.open ? "⏰ " + gt("closes") + ": " + gWhen(d.deadline) : "⏰ " + gt("closedMsg"));
+    out.push(gt("how"));
+    const t = gTally(d), list = gSorted(d, t, "want").filter(function(s){ return s.status !== "cut"; });
+    if(list.length){ out.push("", "*" + gt("soFar") + "*");
+      list.forEach(function(s){ const c = t[s.id]; out.push("• " + s.title + "  ❤️" + c.red.length + " 🤍" + c.white.length + " 🙋" + c.join.length + (s.need ? "/" + s.need : "")); }); }
+  }
+  out.push("", "👉 " + gt("voteHere") + ": " + url);
+  return out.join("\n");
+}
 function callRows(e){
   const m = TIME_RE.exec(e.time || ""); let t = m ? tmin(m[1], m[2], m[3] || m[6]) : null;
   const rows = [];
@@ -610,7 +929,7 @@ function whoHTML(){ return admin() ? 'Admin ✓ · <button type="button" class="
 const CALENDARS = [
   { id: "team", name: "HY Team Nights", ic: "🌙", bg: "linear-gradient(135deg,#1E4691,#6E8FD4)", about: "Friday and Saturday Night Hangouts, orientations and online sharing", kinds: /fnh|friday|saturday|orientation|online|sharing|brainstorm|hangout/i },
   { id: "expo", name: "Product Expos", ic: "✨", bg: "linear-gradient(135deg,#9C3B4C,#E2763E)", about: "Glow From Within evenings: health, skin and hair consultations", kinds: /expo|glow|product/i },
-  { id: "trips", name: "Trips", ic: "✈️", bg: "linear-gradient(135deg,#2A2350,#C2643A)", about: "Year-end trips and qualifier trips", kinds: /trip/i },
+  { id: "trips", name: "Trips", ic: "✈️", bg: "linear-gradient(135deg,#2A2350,#C2643A)", about: "Year-end trips and qualifier trips", kinds: /trip|gala|年会|晚会/i },
   { id: "work", name: "Workshops", ic: "🎯", bg: "linear-gradient(135deg,#8A6230,#D9A85A)", about: "Leadership workshops and trainings", kinds: /workshop|training|leadership/i }
 ];
 function calOf(e){
@@ -793,6 +1112,7 @@ function zonesPlain(text){
   });
 }
 function agendaText(e){
+  if(isGala(e)) return galaText(e);
   if(isCall(e)) return callText(e);
   const L = [], secs = sectionsOf(e), rs = roleSlots(e);
   L.push("*" + e.title + "*" + (e.sub ? " · " + e.sub : ""));
@@ -1012,8 +1332,9 @@ function viewHTML(e){
         return '<div><span>' + esc(m ? m[1] : r[0]) + '</span>' + (r[1] ? '<b>' + esc(r[1]) + '</b>' : '<b class="tbc">To be confirmed</b>')
           + (m ? '<i>' + esc(m[2]) + '</i>' : '') + '</div>';
       }).join("") + '</div>' + (isCall(e) ? '' : '<p class="glink"><a href="guide.html">Hosting & participant guide</a></p>') : '')
-    + (secs.length || !itinDays(e).length ? '<div class="sech">' + esc(e.agendaTitle || "Agenda") + (total ? '<span>' + fmtMin(total) + ' min planned</span>' : '') + '</div>'
-        + agendaHTML(e, secs) : '')
+    + (isGala(e) ? galaHTML(e)
+      : (secs.length || !itinDays(e).length ? '<div class="sech">' + esc(e.agendaTitle || "Agenda") + (total ? '<span>' + fmtMin(total) + ' min planned</span>' : '') + '</div>'
+        + agendaHTML(e, secs) : ''))
     + faqHTML(e);
   return '<div class="epage"><div>' + left + '</div><div class="ep">' + right + '</div></div>';
 }
@@ -1511,6 +1832,7 @@ document.addEventListener("click", function(ev){
   if(fl){ showFlyer(fl.dataset.flyer); return; }
   const b = ev.target.closest("[data-act]"); if(!b || b.disabled) return;
   const act = b.dataset.act;
+  if(act.indexOf("gala-") === 0){ galaAct(act, b); return; }
   if(act === "retry"){ LOAD_FAILED = false; render(); loadData(); return; }
   if(act === "copy"){ copyAgenda(); return; }
   if(act === "copylink"){ copyLink(); return; }
