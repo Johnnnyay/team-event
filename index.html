@@ -376,7 +376,7 @@ h1,.sub,.sech,.run .rh{text-shadow:0 1px 12px rgba(0,0,0,.3)}
 /* The pre-commit hook in the pm-final clone rewrites this time on every commit that touches this
    file. The version check at the bottom reads it, and the script text, to tell an old copy of
    this page from the newest one (DiamondA70/_skills/app-qa/references/self-update.md). */
-const BUILD = "2026-11-23T19:00:32Z";
+const BUILD = "2026-11-23T19:36:07Z";
 const SELF = document.currentScript ? document.currentScript.textContent : "";
 
 /* The agendas: data/team-events.json next to this page, read fresh through the API (GitHub Pages
@@ -455,13 +455,14 @@ const GALA_API = "https://health-intake-api.vercel.app/api/save-functions?doc=ga
 function isGala(e){ return /gala|年会|晚会/i.test(e.kind || ""); }
 const GT = {
   board: ["Show board", "节目板"],
-  how: ["❤️ Most want to see (3 each) · 🤍 Looking forward to (as many as you like) · 🙋 I want to be in it", "❤️ 最想看（每人 3 颗）· 🤍 比较期待（不限）· 🙋 我要上"],
+  how: ["❤️ Must See: the shows you most want to see, 3 each · 🤍 Love the Idea: as many as you like · 🙋 I'm in: you want to perform in it", "❤️ 必看：最想看的节目，每人 3 颗 · 🤍 喜欢这个点子：不限 · 🙋 我要上：想上台参加"],
+  redName: ["Must See", "必看"], whiteName: ["Love the Idea", "喜欢这个点子"],
   closes: ["Proposals and hearts close", "提节目和投票截止"],
   closedMsg: ["Voting has closed. Johnny is picking the lineup. You can still sign up to perform.", "投票已截止，Johnny 正在定节目单。想上台的还可以报名。"],
   daysLeft: ["{n} days left", "还剩 {n} 天"], hoursLeft: ["{n} hours left", "还剩 {n} 小时"], soon: ["closing soon", "马上截止"],
   you: ["You're voting as", "你的名字："], change: ["change", "修改"],
   who: ["Your name first, so your hearts count", "先写名字，投票才算数"], namePh: ["Your name", "你的名字"], ok: ["OK", "好"],
-  redLeft: ["❤️ {n} of 3 left", "❤️ 还剩 {n} 颗"], whiteU: ["🤍 unlimited", "🤍 不限"],
+  redLeft: ["❤️ Must See: {n} of 3 left", "❤️ 必看：还剩 {n} 颗"], whiteU: ["🤍 Love the Idea: unlimited", "🤍 喜欢这个点子：不限"],
   sortWant: ["Most wanted", "最想看"], sortNeed: ["Needs people", "缺人"], sortNew: ["Newest", "最新"], sortLineup: ["Lineup", "节目单"],
   propose: ["+ Propose a show", "+ 提一个节目"], editing: ["Edit the show", "修改节目"], newShow: ["A new show", "新节目"],
   fTitle: ["Name of the show", "节目名称"], fKind: ["Type", "类型"], fMode: ["Live or pre-recorded", "现场还是提前录"],
@@ -473,7 +474,7 @@ const GT = {
   ref: ["▶ Reference", "▶ 参考视频"], seeWho: ["See who", "看看是谁"], hideWho: ["Hide", "收起"],
   selected: ["In the lineup", "已入选"], maybe: ["Maybe", "备选"], cut: ["Not this year", "这次不做"],
   nameFirst: ["Type your name first, then tap again.", "先写上你的名字，再点一次。"],
-  redFull: ["You've used all 3 red hearts. Take one back first, or give a white one.", "3 颗红心用完了。先收回一颗，或者给白心。"],
+  redFull: ["You've used all 3 Must See hearts. Take one back first, or give this one a Love the Idea.", "3 颗「必看」用完了。先收回一颗，或者给这个节目点「喜欢这个点子」。"],
   closed: ["Voting has closed.", "投票已截止。"], cutNo: ["That show isn't going ahead.", "这个节目这次不做了。"],
   saveFail: ["Couldn't save. Check your connection and try again.", "没保存上，检查网络后再试一次。"],
   loading: ["Loading the shows…", "正在加载节目…"], loadFail: ["Couldn't load the shows.", "节目加载失败。"], retry: ["Try again", "重试"],
@@ -498,7 +499,7 @@ function galaPick(v, multi){
   return (parts.length > 1 ? parts[gi()] || parts[0] : t).trim();
 }
 function galaLocalEvent(e){
-  return Object.assign({}, e, { _loc: true, sub: galaPick(e.sub), time: galaPick(e.time), where: galaPick(e.where), whereNote: galaPick(e.whereNote), about: galaPick(e.about, true) });
+  return Object.assign({}, e, { _loc: true, title: galaPick(e.title), sub: galaPick(e.sub), time: galaPick(e.time), where: galaPick(e.where), whereNote: galaPick(e.whereNote), about: galaPick(e.about, true) });
 }
 const GLABEL = [[">Hosted by<", ">主办<"], [">Calendar<", ">日历<"], [">Trips<", ">旅行<"], [">Share this event<", ">分享活动<"],
   [">Copy agenda for WhatsApp<", ">复制拉票文字<"], [">About<", ">活动介绍<"], [">Next up<", ">即将开始<"], [">Coming up<", ">即将开始<"],
@@ -607,8 +608,8 @@ function galaCardHTML(s, c, me, d){
   if(s.link && /^https?:\/\//.test(s.link)) h += '<p class="gref"><a href="' + esc(s.link) + '" target="_blank" rel="noopener">' + esc(gt("ref")) + '</a></p>';
   if(s.lead) h += '<p class="gby">' + esc(gt("aLead")) + ': <b>' + esc(s.lead) + '</b></p>';
   h += '<div class="gbtns">'
-    + '<button type="button" class="gv red' + (on("red") ? ' on' : '') + '" data-act="gala-vote" data-k="red" data-sid="' + esc(s.id) + '"' + (lock ? ' disabled' : '') + ' aria-pressed="' + on("red") + '">❤️ <b>' + c.red.length + '</b></button>'
-    + '<button type="button" class="gv white' + (on("white") ? ' on' : '') + '" data-act="gala-vote" data-k="white" data-sid="' + esc(s.id) + '"' + (lock ? ' disabled' : '') + ' aria-pressed="' + on("white") + '">🤍 <b>' + c.white.length + '</b></button>'
+    + '<button type="button" class="gv red' + (on("red") ? ' on' : '') + '" data-act="gala-vote" data-k="red" data-sid="' + esc(s.id) + '"' + (lock ? ' disabled' : '') + ' aria-pressed="' + on("red") + '">❤️ ' + esc(gt("redName")) + ' · <b>' + c.red.length + '</b></button>'
+    + '<button type="button" class="gv white' + (on("white") ? ' on' : '') + '" data-act="gala-vote" data-k="white" data-sid="' + esc(s.id) + '"' + (lock ? ' disabled' : '') + ' aria-pressed="' + on("white") + '">🤍 ' + esc(gt("whiteName")) + ' · <b>' + c.white.length + '</b></button>'
     + '<button type="button" class="gv join' + (on("join") ? ' on' : '') + '" data-act="gala-vote" data-k="join" data-sid="' + esc(s.id) + '"' + (cut ? ' disabled' : '') + ' aria-pressed="' + on("join") + '">🙋 ' + esc(gt(on("join") ? "inOn" : "inBtn")) + ' · <b>' + joined + (need ? '/' + need : '') + '</b></button>'
     + (needTxt ? '<span class="gneed' + (joined >= need ? ' ok' : '') + '">' + esc(needTxt) + '</span>' : '')
     + '</div>';
@@ -616,7 +617,7 @@ function galaCardHTML(s, c, me, d){
   if(any){
     const openW = !!GALA.who[s.id];
     h += '<button type="button" class="linkbtn gwhob" data-act="gala-who" data-sid="' + esc(s.id) + '">' + esc(gt(openW ? "hideWho" : "seeWho")) + '</button>';
-    if(openW) h += '<div class="gwho">' + [["❤️", c.red], ["🤍", c.white], ["🙋", c.join]].filter(function(x){ return x[1].length; })
+    if(openW) h += '<div class="gwho">' + [["❤️ " + gt("redName") + ":", c.red], ["🤍 " + gt("whiteName") + ":", c.white], ["🙋 " + gt("inBtn") + ":", c.join]].filter(function(x){ return x[1].length; })
       .map(function(x){ return '<div>' + x[0] + ' ' + esc(x[1].join(", ")) + '</div>'; }).join("") + '</div>';
   }
   h += '<p class="gby">' + esc(gt("by")) + ' ' + esc(s.by || "") + (mine || admin()
@@ -724,13 +725,13 @@ document.addEventListener("keydown", function(ev){ if(ev.key === "Enter" && ev.t
 function galaText(e){
   const d = GALA.data, L = gi(), url = location.origin + location.pathname + "#" + e.id;
   const sub = galaPick(e.sub);
-  const out = ["*【" + e.title + "】*"]; if(sub) out.push(sub); out.push("");
+  const out = ["*【" + galaPick(e.title) + "】*"]; if(sub) out.push(sub); out.push("");
   if(d){
     out.push(d.open ? "⏰ " + gt("closes") + ": " + gWhen(d.deadline) : "⏰ " + gt("closedMsg"));
     out.push(gt("how"));
     const t = gTally(d), list = gSorted(d, t, "want").filter(function(s){ return s.status !== "cut"; });
     if(list.length){ out.push("", "*" + gt("soFar") + "*");
-      list.forEach(function(s){ const c = t[s.id]; out.push("• " + gTitle(s) + "  ❤️" + c.red.length + " 🤍" + c.white.length + " 🙋" + c.join.length + (s.need ? "/" + s.need : "")); }); }
+      list.forEach(function(s){ const c = t[s.id]; out.push("• " + gTitle(s) + "  ❤️ " + c.red.length + " · 🤍 " + c.white.length + " · 🙋 " + c.join.length + (s.need ? "/" + s.need : "")); }); }
   }
   out.push("", "👉 " + gt("voteHere") + ": " + url);
   return out.join("\n");
@@ -1047,7 +1048,7 @@ function calendarsHTML(){
     + CALENDARS.map(function(c){
         const evs = EVENTS.filter(function(e){ return calOf(e) === c; }), nx = upcoming(evs)[0];
         return '<a class="calc" href="#cal/' + c.id + '"><div class="ic" style="background:' + c.bg + '">' + c.ic + '</div><h3>' + esc(c.name) + '</h3><p>' + esc(c.about) + ' · ' + evs.length + ' event' + (evs.length === 1 ? '' : 's') + '</p>'
-          + '<div class="nx">' + (nx ? 'Next up<b>' + esc(nx.title) + ' · ' + esc(tba(nx) ? monthYear(nx.date) : navDate(nx.date)) + '</b>' : 'Nothing coming up') + '</div></a>';
+          + '<div class="nx">' + (nx ? 'Next up<b>' + esc(galaPick(nx.title)) + ' · ' + esc(tba(nx) ? monthYear(nx.date) : navDate(nx.date)) + '</b>' : 'Nothing coming up') + '</div></a>';
       }).join("") + '</div>';
 }
 function calendarHTML(id){
@@ -1584,7 +1585,7 @@ function render(){
     else if(r.v === "manage" && admin()){ html = manageHTML(e, r.tab); title = "Manage · " + e.title; }
     else {
       html = (r.v === "manage" ? '<p class="note">Sign in with ··· at the top to manage this event.</p>' : '') + viewHTML(e);
-      title = e.title + " · " + (tba(e) ? monthYear(e.date) : navDate(e.date));
+      title = galaPick(e.title) + " · " + (tba(e) ? monthYear(e.date) : navDate(e.date));
     }
   }
   document.title = title;
